@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { calculateFatigueLevel } from "./fatigue";
+
 
 const CheckinForm = ({ onSubmit }) => {
   const [energy, setEnergy] = useState("normal");
@@ -9,14 +11,19 @@ const CheckinForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onSubmit({
-      id: Date.now(),
-      date: new Date().toISOString().split("T")[0],
-      energy,
-      sleep,
-      soreness,
-      mentalFatigue,
-    });
+   const checkin = {
+  id: Date.now(),
+  date: new Date().toISOString().split("T")[0],
+  energy,
+  sleep,
+  soreness,
+  mentalFatigue,
+};
+
+checkin.fatigueLevel = calculateFatigueLevel(checkin);
+
+onSubmit(checkin);
+
   };
 
   return (

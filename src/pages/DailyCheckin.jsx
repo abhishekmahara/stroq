@@ -1,18 +1,10 @@
-import { useState } from "react";
 import CheckinForm from "../components/health/CheckinForm";
 import SignalIndicator from "../components/health/SignalIndicator";
-import { calculateFatigueLevel } from "../utils/fatigue";
 
-const DailyCheckin = () => {
-  const [latestCheckin, setLatestCheckin] = useState(null);
-
+const DailyCheckin = ({ setCheckins }) => {
   const handleCheckin = (checkin) => {
-    setLatestCheckin(checkin);
+    setCheckins((prev) => [checkin, ...prev]);
   };
-
-  const fatigueLevel = latestCheckin
-    ? calculateFatigueLevel(latestCheckin)
-    : null;
 
   return (
     <section className="space-y-6">
@@ -21,10 +13,6 @@ const DailyCheckin = () => {
       </h1>
 
       <CheckinForm onSubmit={handleCheckin} />
-
-      {fatigueLevel && (
-        <SignalIndicator level={fatigueLevel} />
-      )}
     </section>
   );
 };
