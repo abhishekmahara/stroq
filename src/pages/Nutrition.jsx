@@ -1,11 +1,20 @@
-import React from 'react'
+import { useState } from "react";
+import NutritionForm from "../components/health/NutritionForm";
+import NutritionList from "../components/health/NutritionList";
 
 const Nutrition = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const [meals, setMeals] = useState([]);
 
-export default Nutrition
+  const addMeal = (meal) => {
+    setMeals((prev) => [meal, ...prev]);
+  };
+
+  return (
+    <>
+      <NutritionForm onAddMeal={addMeal} />
+      <NutritionList meals={meals} />
+    </>
+  );
+};
+
+export default Nutrition;

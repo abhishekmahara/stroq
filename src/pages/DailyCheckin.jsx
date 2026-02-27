@@ -1,19 +1,20 @@
+import { useState } from "react";
 import CheckinForm from "../components/health/CheckinForm";
 import SignalIndicator from "../components/health/SignalIndicator";
 
 const DailyCheckin = ({ setCheckins }) => {
+  const [latest, setLatest] = useState(null);
+
   const handleCheckin = (checkin) => {
     setCheckins((prev) => [checkin, ...prev]);
+    setLatest(checkin);
   };
 
   return (
-    <section className="space-y-6">
-      <h1 className="text-2xl font-bold">
-        Daily Body Check-in
-      </h1>
-
+    <>
       <CheckinForm onSubmit={handleCheckin} />
-    </section>
+      {latest && <SignalIndicator level={latest.fatigueLevel} />}
+    </>
   );
 };
 

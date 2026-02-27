@@ -1,5 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
+import { loadState, saveState } from "./utils/storage";
+
 
 import Layout from "./app/layout";
 import AppRoutes from "./app/routes";
@@ -8,9 +10,18 @@ import { getNextAction } from "./utils/recommendation";
 import { getPerformanceTrend } from "./utils/performance";
 
 const App = () => {
-  // ✅ CENTRAL STATE
-  const [workouts, setWorkouts] = useState([]);
-  const [checkins, setCheckins] = useState([]);
+
+  const persisted = loadState();
+
+const [workouts, setWorkouts] = useState(
+  persisted?.workouts || []
+);
+
+const [checkins, setCheckins] = useState(
+  persisted?.checkins || []
+);
+
+ 
 
   // Latest fatigue level
   const latestCheckin = checkins[0];

@@ -1,102 +1,57 @@
 import { useState } from "react";
-import { calculateFatigueLevel } from "./fatigue";
-
+import { calculateFatigueLevel } from "../../utils/fatigue";
 
 const CheckinForm = ({ onSubmit }) => {
-  const [energy, setEnergy] = useState("normal");
-  const [sleep, setSleep] = useState("okay");
-  const [soreness, setSoreness] = useState(false);
-  const [mentalFatigue, setMentalFatigue] = useState("low");
+  const [energy, setEnergy] = useState(3);
+  const [sleep, setSleep] = useState(3);
+  const [soreness, setSoreness] = useState(3);
+  const [mentalFatigue, setMentalFatigue] = useState(3);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   const checkin = {
-  id: Date.now(),
-  date: new Date().toISOString().split("T")[0],
-  energy,
-  sleep,
-  soreness,
-  mentalFatigue,
-};
+    const checkin = {
+      id: Date.now(),
+      date: new Date().toISOString().split("T")[0],
+      energy,
+      sleep,
+      soreness,
+      mentalFatigue,
+    };
 
-checkin.fatigueLevel = calculateFatigueLevel(checkin);
+    checkin.fatigueLevel = calculateFatigueLevel(checkin);
 
-onSubmit(checkin);
-
+    onSubmit(checkin);
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white p-4 rounded-lg shadow space-y-4"
-    >
-      <h2 className="text-lg font-semibold">Daily Check-in</h2>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <label>
+        Energy
+        <input type="range" min="1" max="5" value={energy}
+          onChange={(e) => setEnergy(e.target.value)} />
+      </label>
 
-      {/* Energy */}
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Energy Level
-        </label>
-        <select
-          value={energy}
-          onChange={(e) => setEnergy(e.target.value)}
-          className="w-full border rounded px-3 py-2"
-        >
-          <option value="low">Low</option>
-          <option value="normal">Normal</option>
-          <option value="high">High</option>
-        </select>
-      </div>
+      <label>
+        Sleep
+        <input type="range" min="1" max="5" value={sleep}
+          onChange={(e) => setSleep(e.target.value)} />
+      </label>
 
-      {/* Sleep */}
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Sleep Quality
-        </label>
-        <select
-          value={sleep}
-          onChange={(e) => setSleep(e.target.value)}
-          className="w-full border rounded px-3 py-2"
-        >
-          <option value="poor">Poor</option>
-          <option value="okay">Okay</option>
-          <option value="good">Good</option>
-        </select>
-      </div>
+      <label>
+        Soreness
+        <input type="range" min="1" max="5" value={soreness}
+          onChange={(e) => setSoreness(e.target.value)} />
+      </label>
 
-      {/* Soreness */}
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          checked={soreness}
-          onChange={(e) => setSoreness(e.target.checked)}
-        />
-        <label className="text-sm font-medium">
-          Body feels sore
-        </label>
-      </div>
+      <label>
+        Mental Fatigue
+        <input type="range" min="1" max="5" value={mentalFatigue}
+          onChange={(e) => setMentalFatigue(e.target.value)} />
+      </label>
 
-      {/* Mental fatigue */}
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Mental Fatigue
-        </label>
-        <select
-          value={mentalFatigue}
-          onChange={(e) => setMentalFatigue(e.target.value)}
-          className="w-full border rounded px-3 py-2"
-        >
-          <option value="low">Low</option>
-          <option value="high">High</option>
-        </select>
-      </div>
-
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Save Check-in
+      <button className="bg-green-600 text-white px-4 py-2">
+        Submit Check-in
       </button>
     </form>
   );
