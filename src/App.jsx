@@ -1,16 +1,38 @@
-
-import Hero from './components/pages/Hero'
-import Generator from './components/pages/generator'
-import Workout from './components/pages/Workout'
+import Hero from "./components/pages/Hero";
+import Generator from "./components/pages/generator";
+import Workout from "./components/pages/Workout";
+import { useState } from "react";
+import { generateWorkout } from "./utils/function";
 
 const App = () => {
-  return (
-    <main className='min-h-screen flex flex-col bg-gradient-to-r from-slate-800 to-slate-950 text-white text-sm sm:text-base'>
-      <Hero />
-      <Generator />
-      <Workout />
-    </main>
-  )
-}
+  const [workout, setWorkout] = useState(null);
+  const [split, setSplit] = useState("individual");
+  const [muscles, setMuscles] = useState([]);
+  const [goal, setGoal] = useState("strength_power");
 
-export default App
+
+  function updateWorkout() {
+    if(muscles.length < 1) {
+      return;
+    }
+    let newWorkout= generateWorkout({split, muscles, goal});
+    setWorkout(newWorkout);
+  }
+  return (
+    <main className=" bgColor min-h-screen flex flex-col  text-white text-sm sm:text-base">
+      <Hero />
+      <Generator
+        split={split}
+        muscles={muscles}
+        goal={goal}
+        setSplit={setSplit}
+        setMuscles={setMuscles}
+        setGoal={setGoal}
+        updateWorkout={updateWorkout}
+      />
+      {workout && <Workout workout={workout} />}
+    </main>
+  );
+};
+
+export default App;

@@ -1,18 +1,41 @@
 @import "tailwindcss";
 
 *{
-    font-family: "Poppins", sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 span{
    font-family: inherit ;
 }
 
-.blueShadow{
-    box-shadow : 3px 3px 0 0 #60a5fa;
+.OrangeShadow{
+    box-shadow : 3px 3px 0 0 #Fc4c02;
+}
+.reverseOrangeShadow{
+    box-shadow : -3px 3px 0 0 #Fc4c02;
 }
 
-.blueShadow:hover{
+.reverseOrangeShadow:hover{
+    transform: translate(3px,-3px);
+    box-shadow : -5px 5px 0 0 #Fc4c02;
+}
+
+.OrangeShadow:hover{
     transform: translate(-3px,-3px);
-    box-shadow : 5px 5px 0 0 #60a5fa;
+    box-shadow : 5px 5px 0 0 #Fc4c02;
+}
+
+.buttonColor{
+    background-color : #Fc4c02;
+}
+
+.bgColor{
+background: linear-gradient(135deg, #0F0F10, #1A1A1D);
+}
+
+.hero {
+  background-image: url("src/assets/new-hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

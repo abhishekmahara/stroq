@@ -1,10 +1,12 @@
 import React from 'react'
+import SectionWrapper from '../sectionWrapper'
 
-const Workout = () => {
+const Workout = ({ workout }) => {
   return (
-    <div>
-      
-    </div>
+      <SectionWrapper
+      header={"Generate Your Workout Plan"}
+      title={["IT's", "DANGER", "zone"]}
+    ></SectionWrapper>
   )
 }
 
