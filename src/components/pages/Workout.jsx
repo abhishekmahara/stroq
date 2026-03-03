@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Progress = () => {
+const Workout = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Progress = () => {
   )
 }
 
-export default Progress
+export default Workout
