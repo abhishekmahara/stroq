@@ -147,7 +147,7 @@ const Generator = ({
           </button>
         ))}
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center pb-20">
         <Button text="Formulate" func={updateWorkout} />
       </div>
     </SectionWrapper>
