@@ -14,12 +14,12 @@ const Splash = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-500 ${
+      className={`fixed inset-0 flex items-center justify-center bg-black z-60 transition-opacity duration-500 ${
         fade ? "opacity-0" : "opacity-100"
       }`}
     >
       <img
-        src="public/assets/splash.jpg"
+        src="/assets/splash.jpg"
         alt="STROQ"
         className="fullscreen object-cover animate-pulse"
       />
