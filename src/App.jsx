@@ -10,6 +10,7 @@ import { generateWorkout } from "./utils/function";
 import { Routes, Route } from "react-router-dom";
 import Contact from "./components/pages/Contact";
 import Nutrition from "./components/pages/Nutrition";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -29,7 +30,7 @@ const App = () => {
     <main className="bgColor min-h-screen flex flex-col text-white text-sm sm:text-base">
 
       {loading && <Splash onFinish={() => setLoading(false)} />}
-
+      <ScrollToTop />
       <Navbar />
 
       <Routes>

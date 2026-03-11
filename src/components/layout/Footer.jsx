@@ -67,23 +67,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-700">
+      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-col items-center justify-center gap-3 text-sm text-gray-700">
         <p>© {new Date().getFullYear()} Stroq. All rights reserved.</p>
 
-        <div className="flex gap-4">
-          <a
-            href="src/components/pages/Contact.jsx"
-            className="hover:text-[#43423F] transition"
-          >
-            Privacy
-          </a>
-          <a href="#" className="hover:text-[#43423F] transition">
-            Terms
-          </a>
-          <a href="#" className="hover:text-[#43423F] transition">
-            Contact
-          </a>
-        </div>
       </div>
     </footer>
   );
