@@ -1,5 +1,6 @@
-import React from "react";
-import SectionWrapper from "../sectionWrapper";
+
+
+import SectionWrapper from "../SectionWrappers";
 import ExerciseCard from "../ui/ExerciseCard";
 
 const Workout = ({ workout }) => {

@@ -1,6 +1,6 @@
 import { FaCaretDown } from "react-icons/fa";
 import { SCHEMES, WORKOUTS } from "../../utils/swoldier";
-import SectionWrapper from "../sectionWrapper";
+import SectionWrapper from "../SectionWrappers";
 import { useState } from "react";
 import Button from "../ui/Button";
 
