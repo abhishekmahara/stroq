@@ -6,7 +6,7 @@ const Button = (props) => {
     <div>
       <button
         onClick={onClick ||func}
-        className="px-12 py-4 rounded-md bg-black/10 backdrop-blur-lg text-white border border-orange-500 font-bold py-2 px-4 rounded OrangeShadow duration-200"
+        className="px-12 py-4 rounded-md bg-orange-600 backdrop-blur-lg text-white border border-orange-500 font-bold py-2 px-4 rounded OrangeShadow duration-200"
       >
         {text}
       </button>

@@ -11,9 +11,13 @@ function Header({ index, description, title }) {
         <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-400">
           {index}
         </p>
-        <h4 className="text-xl sm:text-2xl md:text-3xl">{title}</h4>
+        <h4 className="text-[#43423F] text-xl sm:text-2xl md:text-3xl">
+          {title}
+        </h4>
       </div>
-      <p className="text-sm sm:text-base mx-auto text-center">{description}</p>
+      <p className="text-[#43423F] text-sm sm:text-base mx-auto text-center">
+        {description}
+      </p>
     </div>
   );
 }
@@ -34,25 +38,21 @@ const Generator = ({
   }
 
   function updateMuscles(muscleGroup) {
-    //already selected, remove it
     if (muscles.includes(muscleGroup)) {
       setMuscles(muscles.filter((m) => m !== muscleGroup));
       return;
     }
-    // If individual → allow max 3 selections
+
     if (muscles.length >= 3) {
       return;
     }
-    // split is NOT individual → allow only one selection
+
     if (split !== "individual") {
       setMuscles([muscleGroup]);
       return;
     }
 
     setMuscles([...muscles, muscleGroup]);
-    if (muscles.length === 3) {
-      setMuscles(false);
-    }
   }
 
   return (
@@ -60,11 +60,11 @@ const Generator = ({
       header={"Your Personalized Workout"}
       title={["TRAIN", "WITH", "PURPOSE"]}
     >
-      {/*  STEP 01 */}
+      {/* STEP 01 */}
       <Header
         index={"01"}
         title={"Pick your split"}
-        description={"Select the Split you wish to enjoy."}
+        description={"Select the split you want to train with."}
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
@@ -75,11 +75,11 @@ const Generator = ({
               setSplit(type);
               setMuscles([]);
             }}
-            className={`px-8 py-4 rounded-md shadow-md  font-bold duration-200
+            className={`px-8 py-4 rounded-md border font-semibold duration-200
               ${
                 split === type
-                  ? "bg-orange-600 text-white"
-                  : " bg-black text-white"
+                  ? "bg-orange-600 text-white border-orange-600"
+                  : "bg-white text-[#43423F] hover:border-orange-500"
               }`}
           >
             <p className="capitalize">{type.replaceAll("_", " ")}</p>
@@ -87,23 +87,26 @@ const Generator = ({
         ))}
       </div>
 
-      {/* /step2 */}
+      {/* STEP 02 */}
       <Header
         index={"02"}
         title={"Lock on targets"}
-        description={"Select the muscles judged for annihilation."}
+        description={"Select the muscle groups you want to focus on."}
       />
 
-      <div className="bg-black shadow-md rounded-lg flex flex-col">
+      <div className="bg-white border rounded-lg flex flex-col shadow-sm">
         <button
           onClick={toggleModal}
-          className="relative py-3 flex items-center justify-center"
+          className="relative py-3 flex items-center justify-center text-[#43423F]"
         >
-          <p className="uppercase">{` ${muscles.length === 0 ? "Select muscle groups" : muscles.join(" ")} `}</p>
+          <p className="uppercase">
+            {muscles.length === 0 ? "Select muscle groups" : muscles.join(" ")}
+          </p>
           <FaCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
+
         {showModal && (
-          <div className="flex flex-col p-3 gap-2">
+          <div className="flex flex-col p-3 gap-2 border-t">
             {(split === "individual"
               ? WORKOUTS[split]
               : Object.keys(WORKOUTS[split])
@@ -111,12 +114,15 @@ const Generator = ({
               return (
                 <button
                   key={muscleGroupIndex}
-                  onClick={() => {
-                    updateMuscles(muscleGroup);
-                  }}
-                  className={`hover:text-bg-orange-600 px-4 py-2 duration-200 ${muscles.includes(muscleGroup) ? "text-orange-500" : "text-white"}`}
+                  onClick={() => updateMuscles(muscleGroup)}
+                  className={`px-4 py-2 duration-200 text-sm uppercase
+                    ${
+                      muscles.includes(muscleGroup)
+                        ? "text-orange-600 font-semibold"
+                        : "text-[#43423F] hover:text-orange-600"
+                    }`}
                 >
-                  <p className="uppercase">{muscleGroup}</p>
+                  {muscleGroup}
                 </button>
               );
             })}
@@ -124,31 +130,32 @@ const Generator = ({
         )}
       </div>
 
-      {/* STEP 03  */}
+      {/* STEP 03 */}
       <Header
         index={"03"}
         title={"Become Juggernaut"}
-        description={"Select your ultimate objective."}
+        description={"Choose your primary training goal."}
       />
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {Object.keys(SCHEMES).map((scheme, index) => (
           <button
             key={index}
             onClick={() => setGoal(scheme)}
-            className={`px-8 py-4 rounded-md font-bold  shadow-md shadow-white/1
+            className={`px-8 py-4 rounded-md border font-semibold duration-200
               ${
                 goal === scheme
-                  ? "bg-orange-600 text-white"
-                  : "bg-black text-white "
+                  ? "bg-orange-600 text-white border-orange-600"
+                  : "bg-white text-[#43423F] hover:border-orange-500"
               }`}
           >
             <p className="capitalize">{scheme.replaceAll("_", " ")}</p>
           </button>
         ))}
       </div>
+
       <div className="flex items-center justify-center pb-8">
-        <Button text="Formulate" func={updateWorkout} />
+        <Button text="Formulate Workout" func={updateWorkout} />
       </div>
     </SectionWrapper>
   );

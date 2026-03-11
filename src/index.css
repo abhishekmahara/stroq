@@ -30,12 +30,8 @@ span{
 }
 
 .bgColor{
-background: linear-gradient(135deg, #0F0F10, #1A1A1D);
+/* background: linear-gradient(135deg, #0F0F10, #1A1A1D); */
+ background: white;
+ 
 }
 
-.hero {
-  background-image: url("src/assets/bg1.jpg");
-  background-size: cover;
-  background-position: center 20%;
-  background-repeat: no-repeat;
-}
