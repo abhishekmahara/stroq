@@ -1,22 +1,20 @@
-import React from 'react'
-import SectionWrapper from '../sectionWrapper'
-import ExerciseCard from '../ui/ExerciseCard'
+import React from "react";
+import SectionWrapper from "../sectionWrapper";
+import ExerciseCard from "../ui/ExerciseCard";
 
 const Workout = ({ workout }) => {
   return (
-      <SectionWrapper
-      header={"Generate Your Workout Plan"}
-      title={["IT's", "DANGER", "zone"]}
+    <SectionWrapper
+      header={"Your Workout is Ready"}
+      title={["TIME", "TO", "TRAIN"]}
     >
-      <div className='flex flex-col gap-4'>
-        {workout.map((exercise, i)=>{
-          return(
-            <ExerciseCard i={i} key={i} exercise={exercise}/>
-          )
-        })}
+      <div className="flex flex-col gap-5">
+        {workout.map((exercise, i) => (
+          <ExerciseCard key={i} i={i} exercise={exercise} />
+        ))}
       </div>
     </SectionWrapper>
-  )
-}
+  );
+};
 
-export default Workout
+export default Workout;

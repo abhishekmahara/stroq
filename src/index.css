@@ -34,8 +34,8 @@ background: linear-gradient(135deg, #0F0F10, #1A1A1D);
 }
 
 .hero {
-  background-image: url("src/assets/new-hero-bg.jpg");
+  background-image: url("src/assets/bg1.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 20%;
   background-repeat: no-repeat;
 }

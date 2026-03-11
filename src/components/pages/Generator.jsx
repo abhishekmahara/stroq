@@ -57,8 +57,8 @@ const Generator = ({
 
   return (
     <SectionWrapper
-      header={"Generate Your Workout Plan"}
-      title={["IT's", "Huge", "o'clock"]}
+      header={"Your Personalized Workout"}
+      title={["TRAIN", "WITH", "PURPOSE"]}
     >
       {/*  STEP 01 */}
       <Header
@@ -147,7 +147,7 @@ const Generator = ({
           </button>
         ))}
       </div>
-      <div className="flex items-center justify-center pb-20">
+      <div className="flex items-center justify-center pb-8">
         <Button text="Formulate" func={updateWorkout} />
       </div>
     </SectionWrapper>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ExerciseDescription from "./ExerciseDescription";
 
 
 const ExerciseCard = ({ exercise, i }) => {
@@ -21,6 +22,7 @@ const ExerciseCard = ({ exercise, i }) => {
         <h3 className="text-slate-400 text-sm">Muscle Group</h3>
         <p className="capitalize">{exercise.muscles.join(" & ")}</p>
       </div>
+     
       <div className="grid grid-cols-2 sm:grid-cols-4 sm:place-items-center gap-2">
         {["reps", "rest", "tempo"].map(info=>{
             return(
@@ -30,11 +32,21 @@ const ExerciseCard = ({ exercise, i }) => {
                 </div>
             )
         })}
-      </div>
-      <button onClick={handleSetIncrement} className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-amber-800  hover:border-amber-600 w-full duration-200">
+         <button onClick={handleSetIncrement} className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-amber-800  hover:border-amber-600 w-full duration-200">
         <h3 className="text-slate-400 text-sm ">Sets</h3>
         <p className="font-medium">{setsCompleted}/3</p>
       </button>
+      </div>
+       {/* <div className="flex flex-col gap-2">
+        {exercise.description.split('___').map((val)=>{
+            return(
+                <div className="text-sm">
+                    {val}
+                </div>
+            )
+        })}
+      </div> */}
+     <ExerciseDescription exercise={exercise}/>
     </div>
   );
 };
