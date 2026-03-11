@@ -11,7 +11,7 @@ const Footer = () => {
             className="uppercase font-bold text-xl  tracking-wide sm:text-xl md:text-2xl "
           >
             <img
-              src="public/assets/logostroq.png"
+              src="/assets/logostroq.png"
               alt="STROQ"
               className="h-8 w-auto"
             />

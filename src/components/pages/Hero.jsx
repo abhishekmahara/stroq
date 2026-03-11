@@ -10,7 +10,7 @@ const Hero = () => {
       {/* LEFT IMAGE */}
       <div className="hidden md:block h-full">
         <img
-          src="public\assets\hero-bg.jpg"
+          src="/assets/hero-bg.jpg"
           alt="fitness"
           className="h-full w-full object-cover"
         />
@@ -71,7 +71,7 @@ const Hero = () => {
       {/* RIGHT IMAGE */}
       <div className="hidden md:block h-full">
         <img
-          src="public\assets\bg2.jpg"
+          src="/assets/bg2.jpg"
           alt="fitness"
           className="h-full w-full object-cover"
         />

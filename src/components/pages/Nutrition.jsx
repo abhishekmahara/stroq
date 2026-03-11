@@ -51,7 +51,7 @@ const Nutrition = () => {
         {/* RIGHT IMAGE */}
         <div className="flex justify-center">
           <img
-            src="public/assets/recovery.jpg"
+            src="/assets/recovery.jpg"
             alt="fitness nutrition"
             className="rounded-sm object-cover  h-[180px] w-[500px] sm:h-[220px] md:h-[300px] lg:w-[600px]  "
           />
@@ -96,7 +96,7 @@ const Nutrition = () => {
       <div className="px-8 md:px-20 pb-24">
         <div className="relative rounded-sm overflow-hidden">
           <img
-            src="public/assets/fit.jpg"
+            src="/assets/fit.jpg"
             alt="fitness food"
             className="w-full h-[380px] object-cover"
           />
