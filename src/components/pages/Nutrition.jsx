@@ -29,7 +29,7 @@ const Nutrition = () => {
   return (
     <section className="min-h-screen">
       {/* HERO */}
-      <div className="grid md:grid-cols-2 items-center min-h-[80vh] px-8 md:px-20">
+      <div className="grid md:grid-cols-2 items-center min-h-[80vh] px-8 md:px-20 py-25 lg:py-1">
         {/* LEFT */}
         <div className="flex flex-col gap-6 max-w-xl">
           <p className="uppercase tracking-[0.35em] text-xs text-[#43423F] font-semibold">

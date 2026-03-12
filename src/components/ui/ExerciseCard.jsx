@@ -37,15 +37,7 @@ const ExerciseCard = ({ exercise, i }) => {
         <p className="font-medium">{setsCompleted}/3</p>
       </button>
       </div>
-       {/* <div className="flex flex-col gap-2">
-        {exercise.description.split('___').map((val)=>{
-            return(
-                <div className="text-sm">
-                    {val}
-                </div>
-            )
-        })}
-      </div> */}
+      
      <ExerciseDescription exercise={exercise}/>
     </div>
   );

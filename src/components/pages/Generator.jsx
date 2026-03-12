@@ -94,7 +94,7 @@ const Generator = ({
         description={"Select the muscle groups you want to focus on."}
       />
 
-      <div className="bg-white border rounded-lg flex flex-col shadow-sm">
+      <div className="bg-white  border-1 border-slate-400  rounded-lg flex flex-col shadow-sm">
         <button
           onClick={toggleModal}
           className="relative py-3 flex items-center justify-center text-[#43423F]"
