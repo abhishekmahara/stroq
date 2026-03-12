@@ -10,7 +10,7 @@ const Hero = () => {
       {/* LEFT IMAGE */}
       <div className="hidden md:block h-full">
         <img
-          src="/assets/hero-bg.jpg"
+          src="/assets/Innerpace.jpg"
           alt="fitness"
           className="h-full w-full object-cover"
         />
