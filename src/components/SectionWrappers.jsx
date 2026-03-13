@@ -9,7 +9,7 @@ function SectionWrapper({ children, header, title }) {
           {header}
         </p>
 
-        <h2 className="font-bold  text-[#43423F] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+        <h2 className="font-semibold  text-neutral-800 text-3xl sm:text-4xl md:text-5xl  leading-tight">
           {title[0]}{" "}
           <span className="text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.1)]">
             {title[1]}

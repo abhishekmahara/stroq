@@ -1,83 +1,109 @@
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
+import StroqActivities from "./Activities";
 
 const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-screen grid grid-cols-1 md:grid-cols-3 items-center">
+    <>
+      <section className="grid grid-cols-1 md:grid-cols-3 items-center bg-white min-h-screen ">
 
-      {/* LEFT IMAGE */}
-      <div className="hidden md:block h-full">
-        <img
-          src="/assets/Innerpace.jpg"
-          alt="fitness"
-          className="h-full w-full object-cover"
-        />
-      </div>
+        {/* LEFT IMAGE */}
+        <div className="hidden md:block h-full relative overflow-hidden">
+          <img
+            src="/assets/Innerpace.jpg"
+            alt="fitness"
+            className="h-full w-full object-cover"
+          />
 
-      {/* CENTER CONTENT */}
-      <div className="flex flex-col items-center text-center gap-10 px-8 py-20">
-
-        {/* Brand */}
-        <div className="flex flex-col gap-4">
-          <p className="uppercase tracking-[0.3em] text-xs text-[#43423F] font-semibold">
-            Precision Performance Training
-          </p>
-
-          <h1 className="text-5xl font-bold md:text-6xl text-[#43423F] tracking-tight uppercase">
-            StroQ
-          </h1>
+          <div className="absolute inset-0 bg-black/10"></div>
         </div>
 
-        {/* Description */}
-        <div className="max-w-[450px] flex flex-col gap-3">
-          <p className="text-lg font-medium uppercase text-[#43423F] tracking-wide">
-            It's Time to Get <span className="text-orange-600 font-bold">Enormous</span>
-          </p>
+        {/* CENTER CONTENT */}
+        <div className="flex flex-col items-center text-center gap-12 px-8 py-20 lg:pt-10">
 
-          <p className="text-sm text-gray-400 leading-relaxed">
-            Stop wandering the gym floor. StroQ generates personalized
-            workouts using performance algorithms and biometrics.
-          </p>
+          {/* Brand */}
+          <div className="flex flex-col gap-5">
+            <p className="uppercase tracking-[0.35em] text-xs text-gray-500 font-semibold">
+              Precision Performance Training
+            </p>
+
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-[#1d1d1d] uppercase">
+              Stro<span className="text-orange-600">Q</span>
+            </h1>
+
+            <div className="w-16 h-[3px] bg-orange-600 mx-auto"></div>
+          </div>
+
+          {/* Description */}
+          <div className="max-w-[460px] flex flex-col gap-4">
+            <p className="text-lg font-semibold uppercase tracking-wide text-[#333]">
+              It's Time to Get{" "}
+              <span className="text-orange-600 font-bold">Stronger</span>
+            </p>
+
+            <p className="text-sm text-gray-500 leading-relaxed">
+              Stop wandering the gym floor. StroQ generates personalized
+              workouts based on your preferences and provides simple
+              nutrition guidance to help you stay consistent and improve
+              your performance.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="pt-2">
+            <Button
+              text="Generate Workout Plan"
+              onClick={() => navigate("/generator")}
+            />
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-10 pt-7 border-t border-gray-200">
+            <div className="flex flex-col gap-1">
+              <p className="text-orange-600 font-bold text-sm tracking-wide">
+                SMART
+              </p>
+              <p className="text-[11px] uppercase text-gray-400">
+                Workouts
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-orange-600 font-bold text-sm tracking-wide">
+                GOAL
+              </p>
+              <p className="text-[11px] uppercase text-gray-400">
+                Based Plans
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-orange-600 font-bold text-sm tracking-wide">
+                SIMPLE
+              </p>
+              <p className="text-[11px] uppercase text-gray-400">
+                Nutrition
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        {/* CTA */}
-        <Button
-          text="Generate Plan"
-          onClick={() => navigate("/generator")}
-        />
-
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-10 pt-8 border-t border-white/10">
-          <div>
-            <p className="text-orange-600 font-bold">HANDS-DRIVEN</p>
-            <p className="text-[10px] uppercase text-gray-500">Selection</p>
-          </div>
-
-          <div>
-            <p className="text-orange-600 font-bold">PRO-LEVEL</p>
-            <p className="text-[10px] uppercase text-gray-500">Routines</p>
-          </div>
-
-          <div>
-            <p className="text-orange-600 font-bold">ZERO</p>
-            <p className="text-[10px] uppercase text-gray-500">Guesswork</p>
-          </div>
+        {/* RIGHT IMAGE */}
+        <div className="hidden md:block h-full relative overflow-hidden">
+          <img
+            src="/assets/bg2.jpg"
+            alt="fitness"
+            className="h-full w-full object-cover"
+          />
         </div>
 
-      </div>
+      </section>
 
-      {/* RIGHT IMAGE */}
-      <div className="hidden md:block h-full">
-        <img
-          src="/assets/bg2.jpg"
-          alt="fitness"
-          className="h-full w-full object-cover"
-        />
-      </div>
-
-    </section>
+      <StroqActivities />
+    </>
   );
 };
 

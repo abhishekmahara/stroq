@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import Contact from "./components/pages/Contact";
 import Nutrition from "./components/pages/Nutrition";
 import ScrollToTop from "./components/ScrollToTop";
+import StroqActivities from "./components/pages/Activities";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -35,7 +36,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Hero />} />
-
+        <Route path="/activities" element={<StroqActivities />} />
         <Route
           path="/generator"
           element={

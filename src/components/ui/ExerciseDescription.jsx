@@ -19,7 +19,7 @@ function ExerciseDescription({ exercise }) {
       {parts.length > 1 && (
         <button
           onClick={() => setShowMore(prev => !prev)}
-          className="text-amber-600 text-sm font-semibold hover:text-amber-300 transition w-fit"
+          className="text-white text-sm font-semibold hover:text-orange-500 transition w-fit"
         >
           {showMore ? "Show Less ↑" : "Read More ↓"}
         </button>

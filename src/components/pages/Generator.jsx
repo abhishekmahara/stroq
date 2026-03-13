@@ -4,20 +4,23 @@ import SectionWrapper from "../SectionWrappers";
 import { useState } from "react";
 import Button from "../ui/Button";
 
-function Header({ index, description, title }) {
+
+function Header({ index, title, description }) {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-center gap-2">
-        <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-400">
-          {index}
-        </p>
-        <h4 className="text-[#43423F] text-xl sm:text-2xl md:text-3xl">
-          {title}
-        </h4>
-      </div>
-      <p className="text-[#43423F] text-sm sm:text-base mx-auto text-center">
+    <div className="text-center mt-8">
+
+      <p className="text-orange-600 text-sm font-semibold tracking-[0.35em] mb-4">
+        STEP {index}
+      </p>
+
+      <h2 className="text-3xl md:text-4xl font-semibold text-[#1d1d1d] mb-3">
+        {title}
+      </h2>
+
+      <p className="text-gray-500 text-sm max-w-xl mx-auto">
         {description}
       </p>
+
     </div>
   );
 }
@@ -75,7 +78,7 @@ const Generator = ({
               setSplit(type);
               setMuscles([]);
             }}
-            className={`px-8 py-4 rounded-md border font-semibold duration-200
+            className={`px-8 py-4 lg:py-6 rounded-md border font-semibold duration-200
               ${
                 split === type
                   ? "bg-orange-600 text-white border-orange-600"
@@ -91,10 +94,12 @@ const Generator = ({
       <Header
         index={"02"}
         title={"Lock on targets"}
-        description={"Select the muscle groups you want to focus on."}
+        description={split === "individual"
+            ? "You can choose up to three muscle groups."
+            : "Choose one muscle group."}
       />
 
-      <div className="bg-white  border-1 border-slate-400  rounded-lg flex flex-col shadow-sm">
+      <div className="bg-white  border-1 border-slate-600  rounded-lg flex flex-col shadow-sm">
         <button
           onClick={toggleModal}
           className="relative py-3 flex items-center justify-center text-[#43423F]"
@@ -142,11 +147,11 @@ const Generator = ({
           <button
             key={index}
             onClick={() => setGoal(scheme)}
-            className={`px-8 py-4 rounded-md border font-semibold duration-200
+            className={`px-8 py-4 lg:py-6 rounded-md border font-semibold duration-200
               ${
                 goal === scheme
                   ? "bg-orange-600 text-white border-orange-600"
-                  : "bg-white text-[#43423F] hover:border-orange-500"
+                  : "bg-neutral-900 text-white hover:border-orange-500"
               }`}
           >
             <p className="capitalize">{scheme.replaceAll("_", " ")}</p>

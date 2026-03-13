@@ -9,7 +9,7 @@ const Workout = ({ workout }) => {
       header={"Your Workout is Ready"}
       title={["TIME", "TO", "TRAIN"]}
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 ">
         {workout.map((exercise, i) => (
           <ExerciseCard key={i} i={i} exercise={exercise} />
         ))}

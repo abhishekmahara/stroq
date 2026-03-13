@@ -8,7 +8,7 @@ const ExerciseCard = ({ exercise, i }) => {
         setSetsCompleted((prev) => (prev + 1) % 4);
     };
   return (
-    <div className="p-4 rounded-md flex flex-col bg-black sm:flex-wrap">
+    <div className="p-4 rounded-md flex flex-col bg-black/95 sm:flex-wrap">
       <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-x-4">
         <h4 className="text-3xl hidden sm:inline sm:text-4xl md:text-5xl font-semibold text">
           0{i + 1}
@@ -32,7 +32,7 @@ const ExerciseCard = ({ exercise, i }) => {
                 </div>
             )
         })}
-         <button onClick={handleSetIncrement} className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-amber-800  hover:border-amber-600 w-full duration-200">
+         <button onClick={handleSetIncrement} className="flex flex-col p-2 rounded-xs bg-orange-600  w-full duration-200">
         <h3 className="text text-sm ">Sets</h3>
         <p className="font-medium">{setsCompleted}/3</p>
       </button>
