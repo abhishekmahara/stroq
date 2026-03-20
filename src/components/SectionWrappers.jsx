@@ -11,17 +11,17 @@ function SectionWrapper({ children, header, title }) {
 
         <h2 className="font-semibold  text-neutral-800 text-3xl sm:text-4xl md:text-5xl  leading-tight">
           {title[0]}{" "}
-          <span className="text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.1)]">
+          <span className="text-orange-600 drop-shadow-[0_0_8px_rgba(249,115,22,0.1)]">
             {title[1]}
           </span>{" "}
           {title[2]}
         </h2>
 
-        <div className="w-20 h-1 bg-orange-500 rounded-full mt-2"></div>
+        <div className="w-20 h-1 bg-orange-600 rounded-full mt-2"></div>
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl w-full mx-auto flex flex-col gap-12 px-4">
+      <div className="max-w-7xl w-full mx-auto flex flex-col  gap-12 px-4">
         {children}
       </div>
 

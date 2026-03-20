@@ -1,6 +1,8 @@
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import StroqActivities from "./Activities";
+import Thirdheropage from "./thirdheropage";
+import StroqWordCloud from "./StroqWordCloud";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Hero = () => {
         {/* LEFT IMAGE */}
         <div className="hidden md:block h-full relative overflow-hidden">
           <img
-            src="/assets/Innerpace.jpg"
+            src="/assets/heroimg1.jpg"
             alt="fitness"
             className="h-full w-full object-cover"
           />
@@ -21,7 +23,7 @@ const Hero = () => {
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="flex flex-col items-center text-center gap-12 px-8 py-20 lg:pt-10">
+        <div className="flex flex-col items-center text-center gap-12 px-8 py-20">
 
           {/* Brand */}
           <div className="flex flex-col gap-5">
@@ -29,7 +31,7 @@ const Hero = () => {
               Precision Performance Training
             </p>
 
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-[#1d1d1d] uppercase">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#1d1d1d] uppercase">
               Stro<span className="text-orange-600">Q</span>
             </h1>
 
@@ -103,6 +105,8 @@ const Hero = () => {
       </section>
 
       <StroqActivities />
+      <StroqWordCloud />
+    
     </>
   );
 };

@@ -33,7 +33,10 @@ const StroqActivities = () => {
             <li className="transition hover:text-orange-500">
               Healthier lifestyle
             </li>
-
+            
+            {/* <li className="transition hover:text-orange-500">
+             फिटनेस कोई लक्ष्य नहीं, एक जीवनशैली है।
+            </li> */}
           </ul>
 
         </div>
@@ -42,9 +45,9 @@ const StroqActivities = () => {
         <div className="relative">
 
           <img
-            src="/assets/hero-bg.jpg"
+            src="/assets/aboutimg.jpg"
             alt="Stroq Fitness"
-            className="w-full h-[600px] object-cover rounded-xs"
+            className="w-full h-[600px] object-cover rounded-md"
           />
 
           
