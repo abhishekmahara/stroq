@@ -1,7 +1,6 @@
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import StroqActivities from "./Activities";
-import Thirdheropage from "./thirdheropage";
 import StroqWordCloud from "./StroqWordCloud";
 
 const Hero = () => {
