@@ -9,20 +9,20 @@ span{
 }
 
 .OrangeShadow{
-    box-shadow : 3px 3px 0 0 #Fc4c02;
+    box-shadow: none;
 }
 .reverseOrangeShadow{
-    box-shadow : -3px 3px 0 0 #Fc4c02;
+    box-shadow: none;
 }
 
 .reverseOrangeShadow:hover{
-    transform: translate(3px,-3px);
-    box-shadow : -5px 5px 0 0 #Fc4c02;
+    transform: none;
+    box-shadow: none;
 }
 
 .OrangeShadow:hover{
-    transform: translate(-3px,-3px);
-    box-shadow : 5px 5px 0 0 #Fc4c02;
+    transform: none;
+    box-shadow: none;
 }
 
 .buttonColor{

@@ -1,16 +1,69 @@
-# React + Vite
+﻿# Stroq Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Stroq is a React + Vite frontend focused on workout generation and fitness guidance.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```text
+src/
+  App.jsx
+  main.jsx
 
-## React Compiler
+  components/
+    common/
+      ScrollToTop.jsx
+      SectionWrapper.jsx
+      SectionStepHeader.jsx
+      SocialLink.jsx
+    layout/
+      Navbar.jsx
+      Footer.jsx
+    splash/
+      Splash.jsx
+    ui/
+      Button.jsx
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  features/
+    workout/
+      components/
+        Generator.jsx
+        Workout.jsx
+        ExerciseCard.jsx
+        ExerciseDescription.jsx
+      data/
+        swoldier.js
+      utils/
+        generateWorkout.js
 
-## Expanding the ESLint configuration
+  pages/
+    Hero.jsx
+    Activities.jsx
+    Contact.jsx
+    Nutrition.jsx
+    StroqWordCloud.jsx
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## FatSecret Integration (Nutrition Page)
+
+The Nutrition page now includes live food search and macro lookup powered by FatSecret.
+
+1. Create a `.env` file in `stroq-frontend/`.
+2. Add these values:
+
+```env
+FATSECRET_CLIENT_ID=your_client_id
+FATSECRET_CLIENT_SECRET=your_client_secret
+FATSECRET_SCOPE=basic
+```
+
+3. Run `npm run dev`.
+
+Notes:
+- FatSecret OAuth token calls are proxied through Vite middleware (`vite.config.js`) so secrets stay server-side during local development.
+- If credentials are missing or invalid, Nutrition food search will show a clear error message.
+
+## Scripts
+
+- `npm run dev` - start dev server
+- `npm run build` - build for production
+- `npm run preview` - preview production build

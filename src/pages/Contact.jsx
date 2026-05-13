@@ -1,6 +1,7 @@
-import { FaXTwitter } from "react-icons/fa6";
-import Button from "../ui/Button";
-import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
+﻿import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Button from "../components/ui/Button";
+import SocialLink from "../components/common/SocialLink";
 
 const Contact = () => {
   return (
@@ -25,19 +26,19 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="border border-gray-500 rounded-md p-3 outline-none text-sm"
+              className="border border-gray-500 rounded-lg p-3 outline-none text-sm"
             />
 
             <input
               type="email"
               placeholder="Your Email"
-              className="border border-gray-500 rounded-md p-3 outline-none text-sm"
+              className="border border-gray-500 rounded-lg p-3 outline-none text-sm"
             />
 
             <textarea
               rows="5"
               placeholder="Your Message"
-              className="border border-gray-500 rounded-md p-3 outline-none text-sm"
+              className="border border-gray-500 rounded-lg p-3 outline-none text-sm"
             />
 
             <Button text="Send Message" />
@@ -80,29 +81,23 @@ const Contact = () => {
 
             <div className="flex gap-3">
 
-              <a
+              <SocialLink
                 href="https://x.com/abhishekmahara_"
-                className="border border-gray-300 px-4 py-2 rounded-md flex items-center gap-2 text-sm text-gray-600 hover:bg-gray-100 transition"
-              >
-                <FaXTwitter />
-                Twitter
-              </a>
+                icon={FaXTwitter}
+                label="Twitter"
+              />
 
-              <a
+              <SocialLink
                 href="https://github.com/abhishekmahara"
-                className="border border-gray-300 px-4 py-2 rounded-md flex items-center gap-2 text-sm text-gray-600 hover:bg-gray-100 transition"
-              >
-                <FaGithub />
-                GitHub
-              </a>
+                icon={FaGithub}
+                label="GitHub"
+              />
 
-              <a
+              <SocialLink
                 href="https://www.linkedin.com/in/abhishekmahara/"
-                className="border border-gray-300 px-4 py-2 rounded-md flex items-center gap-2 text-sm text-gray-600 hover:bg-gray-100 transition"
-              >
-                <FaLinkedin />
-                LinkedIn
-              </a>
+                icon={FaLinkedin}
+                label="LinkedIn"
+              />
 
             </div>
           </div>
@@ -134,3 +129,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+

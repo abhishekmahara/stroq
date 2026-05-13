@@ -1,12 +1,9 @@
-
-
-const Button = (props) => {
-  const { text, func ,onClick } = props;
+﻿const Button = ({ text, onClick, func }) => {
   return (
     <div>
       <button
-        onClick={onClick ||func}
-        className="px-12 py-4 rounded-md bg-white  text-orange-600 border border-orange-500 uppercase font-bold py-2 px-4 rounded OrangeShadow duration-200"
+        onClick={onClick || func}
+        className="px-12 py-4 rounded-lg bg-neutral-950 text-white border border-black uppercase font-bold duration-200"
       >
         {text}
       </button>
@@ -15,3 +12,5 @@ const Button = (props) => {
 };
 
 export default Button;
+
+

@@ -1,4 +1,4 @@
-import { EXERCISES, SCHEMES, TEMPOS, WORKOUTS } from "./swoldier"
+import { EXERCISES, SCHEMES, TEMPOS, WORKOUTS } from "../data/swoldier";
 const exercises = exercisesFlattener(EXERCISES)
 
 export function generateWorkout(args) {
@@ -90,7 +90,7 @@ export function generateWorkout(args) {
             Math.floor(Math.random() * filteredOppList.length)
             ];
 
-        // console.log(randomExercise)
+        
 
         if (!randomExercise) {
             return {};
