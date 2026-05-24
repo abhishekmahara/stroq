@@ -9,7 +9,7 @@ function ExerciseDescription({ exercise }) {
   return (
     <div className="flex flex-col gap-2 mt-3">
       {visibleParts.map((val, index) => (
-        <p key={index} className="text-sm text-gray-300 leading-relaxed">
+        <p key={index} className="text-sm text-gray-600 leading-relaxed">
           {val}
         </p>
       ))}

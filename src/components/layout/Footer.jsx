@@ -1,91 +1,164 @@
 ﻿import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+import {
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
+
 import { FaXTwitter } from "react-icons/fa6";
-import SocialLink from "../common/SocialLink";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="w-full mt-auto  bg-white/5 backdrop-blur-2xl border-t border-white/10 px-6 py-10 rounded-t-lg">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
-        <div>
-          <Link
-            to="/"
-            className="uppercase font-bold text-xl  tracking-wide sm:text-xl md:text-2xl "
-          >
-            <img
-              src="/assets/logostroq.png"
-              alt="STROQ"
-              className="h-8 w-auto"
-            />
-          </Link>
+    <footer className="bg-[#050505] overflow-hidden">
 
-          <p className="text-gray-700 text-sm mt-3 leading-relaxed">
-            Stroq helps you generate personalized workouts based on your fitness
-            goals, targeted muscle groups, and training split. Train smarter and
-            build consistency.
-          </p>
+      <div className="relative overflow-hidden bg-[#0a0a0a] border-t border-white/5 ">
+
+        {/* BACKGROUND GLOW */}
+        <div className="absolute inset-0 overflow-hidden">
+
+          {/* LEFT ORANGE */}
+          <div className="absolute left-[-5%] bottom-[-10%] w-[420px] h-[420px] bg-[#fc5200] blur-[120px] opacity-55" />
+
+          {/* CENTER RED */}
+          <div className="absolute left-[35%] bottom-[-12%] w-[420px] h-[320px] bg-red-600 blur-[120px] opacity-40" />
+
+          {/* RIGHT GOLD */}
+          <div className="absolute right-[-5%] bottom-[-10%] w-[420px] h-[320px] bg-orange-300 blur-[130px] opacity-50" />
+
+          {/* LIGHT OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/20" />
         </div>
 
-        <div>
-          <h3 className="font-semibold text-[#43423F] mb-3">Navigation</h3>
+        {/* CONTENT */}
+        <div className="relative z-10 h-full flex flex-col justify-between">
 
-          <div className="flex flex-col gap-2 text-gray-500 text-sm">
-            <Link to="/" className="hover:text-[#43423F] transition">
-              Home
-            </Link>
+          {/* TOP AREA */}
+          <div className="grid lg:grid-cols-3 gap-10 p-6 sm:p-8 lg:p-12">
 
-            <Link to="/generator" className="hover:text-[#43423F] transition">
-              Workout Generator
-            </Link>
+            {/* LEFT NAV */}
+            <div>
 
-            <Link
-              to="/guides/nutrition"
-              className="hover:text-[#43423F] transition"
-            >
-              Nutrition Guide
-            </Link>
+              <div className="flex flex-col gap-2">
 
-            <Link
-              to="/guides/workout"
-              className="hover:text-[#43423F] transition"
-            >
-              Workout Guide
-            </Link>
+                <Link
+                  to="/"
+                  className="text-sm text-gray-300 hover:text-white transition w-fit"
+                >
+                  Home
+                </Link>
+
+                <Link
+                  to="/about"
+                  className="text-sm text-gray-300 hover:text-white transition w-fit"
+                >
+                  About
+                </Link>
+
+                <Link
+                  to="/nutrition"
+                  className="text-sm text-gray-300 hover:text-white transition w-fit"
+                >
+                  Nutrition
+                </Link>
+
+                <Link
+                  to="/generator"
+                  className="text-sm text-gray-300 hover:text-white transition w-fit"
+                >
+                  Workout Generator
+                </Link>
+
+              
+
+                <Link
+                  to="/contact"
+                  className="text-sm text-gray-300 hover:text-white transition w-fit"
+                >
+                  Contact
+                </Link>
+              </div>
+
+             
+            </div>
+
+            {/* CENTER */}
+            <div className="text-center">
+
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-3">
+                Developer
+              </p>
+
+              <p className="text-sm text-gray-300 leading-relaxed max-w-[260px] mx-auto">
+                Frontend developer focused on sports-inspired
+                digital experiences and premium UI systems.
+              </p>
+
+              {/* SOCIAL */}
+              <div className="flex items-center justify-center gap-2 mt-8">
+
+                <a
+                  href="https://www.linkedin.com/in/abhishekmahara/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-sm border border-white/10 bg-white/5 flex items-center justify-center text-white hover:bg-[#fc5200] transition"
+                >
+                  <FaLinkedin size={14} />
+                </a>
+
+                <a
+                  href="https://x.com/abhishekmahara_"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-sm border border-white/10 bg-white/5 flex items-center justify-center text-white hover:bg-[#fc5200] transition"
+                >
+                  <FaXTwitter size={14} />
+                </a>
+
+                <a
+                  href="https://github.com/abhishekmahara"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-sm border border-white/10 bg-white/5 flex items-center justify-center text-white hover:bg-[#fc5200] transition"
+                >
+                  <FaGithub size={14} />
+                </a>
+              </div>
+
+             
+            </div>
+
+            {/* RIGHT */}
+            <div className="lg:text-right lg:ml-auto">
+
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-3">
+                Stroq Theme
+              </p>
+
+              <p className="text-sm text-gray-300 leading-relaxed max-w-[240px] lg:ml-auto">
+                Sports-inspired fitness experiences with modern
+                frontend craftsmanship.
+              </p>
+
+           
+            </div>
+          </div>
+
+          {/* HUGE LOGO */}
+          <div className="relative px-4 sm:px-8 lg:px-14 pb-4">
+
+            <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] xl:text-[16rem] font-semibold tracking-[-0.1em] leading-none text-[#f3ece8] select-none">
+              STROQ
+              <span className="font-normal text-[#f3ece8] italic">
+                Fitness
+              </span>
+            </h1>
           </div>
         </div>
-
-        <div>
-          <h3 className="font-semibold text-[#43423F] mb-3">Follow</h3>
-
-          <div className="flex flex-col gap-2 text-gray-500 text-sm">
-            <SocialLink
-              href="https://www.linkedin.com/in/abhishekmahara/"
-              icon={FaLinkedin}
-              label="LinkedIn"
-              variant="text"
-            />
-            <SocialLink
-              href="https://x.com/abhishekmahara_"
-              icon={FaXTwitter}
-              label="X"
-              variant="text"
-            />
-            <SocialLink
-              href="https://github.com/abhishekmahara"
-              icon={FaGithub}
-              label="GitHub"
-              variant="text"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-col items-center justify-center gap-3 text-sm text-gray-700">
-        <p>&copy; {new Date().getFullYear()} Stroq. All rights reserved.</p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
-

@@ -6,7 +6,6 @@ export function generateWorkout(args) {
     let exer = Object.keys(exercises);
     exer = exer.filter((key) => exercises[key].meta.environment !== "home");
     let includedTracker = [];
-    let numSets = 5;
     let listOfMuscles;
 
     if (workout === "individual") {
@@ -23,7 +22,7 @@ export function generateWorkout(args) {
             //make this compound and exercise muscle -> array of objects and destructure in loop
             return [
                 ...acc,
-                ...[...Array(parseInt(curr)).keys()].map((val) =>
+                ...[...Array(parseInt(curr)).keys()].map(() =>
                     index === 0 ? "compound" : "accessory"
                 ),
             ];

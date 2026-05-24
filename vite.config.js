@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { Buffer } from "node:buffer";
+import process from "node:process";
 
 function fatsecretProxyPlugin(env) {
   let cachedToken = null;

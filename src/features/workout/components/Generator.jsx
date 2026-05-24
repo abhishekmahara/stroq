@@ -1,17 +1,31 @@
 ﻿import { useMemo, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 
+import {
+  Activity,
+  ArrowRight,
+  Check,
+  Flame,
+  Zap,
+} from "lucide-react";
+
 import { SCHEMES, WORKOUTS } from "../data/swoldier";
 
 import SectionWrapper from "../../../components/common/SectionWrapper";
 import SectionStepHeader from "../../../components/common/SectionStepHeader";
-import Button from "../../../components/ui/Button";
 
 const splitDescriptions = {
-  individual: "Target up to 3 muscle groups in one session.",
-  bro_split: "Classic bodybuilding style push/pull/legs structure.",
-  bodybuilder_split: "Focused daily muscle isolation for high volume work.",
-  upper_lower: "Balanced upper/lower split for consistency and recovery.",
+  individual:
+    "Target specific muscle groups with flexible focused sessions.",
+
+  bro_split:
+    "Classic bodybuilding structure focused on volume and isolation.",
+
+  bodybuilder_split:
+    "High-volume muscle isolation with maximum hypertrophy focus.",
+
+  upper_lower:
+    "Balanced upper and lower structure for progression and recovery.",
 };
 
 const Generator = ({
@@ -23,15 +37,24 @@ const Generator = ({
   setGoal,
   updateWorkout,
 }) => {
+
   const [showModal, setShowModal] = useState(false);
 
-  const selectedSplitLabel = split.replaceAll("_", " ");
-  const selectedGoalLabel = goal.replaceAll("_", " ");
+  const selectedSplitLabel =
+    split.replaceAll("_", " ");
+
+  const selectedGoalLabel =
+    goal.replaceAll("_", " ");
 
   const workoutIntensity = useMemo(() => {
-    const ratio = SCHEMES[goal]?.ratio || [2, 3];
 
-    return ratio[0] >= ratio[1] ? "High Strength Bias" : "Hypertrophy Bias";
+    const ratio =
+      SCHEMES[goal]?.ratio || [2, 3];
+
+    return ratio[0] >= ratio[1]
+      ? "Strength Bias"
+      : "Hypertrophy Bias";
+
   }, [goal]);
 
   function toggleModal() {
@@ -39,8 +62,13 @@ const Generator = ({
   }
 
   function updateMuscles(muscleGroup) {
+
     if (muscles.includes(muscleGroup)) {
-      setMuscles(muscles.filter((m) => m !== muscleGroup));
+
+      setMuscles(
+        muscles.filter((m) => m !== muscleGroup)
+      );
+
       return;
     }
 
@@ -56,239 +84,322 @@ const Generator = ({
 
   return (
     <SectionWrapper
-      header={"Your Personalized Workout"}
-      title={["TRAIN", "WITH", "PURPOSE"]}
+      header="Performance Generator"
+      title={["BUILD", "YOUR", "SYSTEM"]}
     >
-      <div className="max-w-8xl mx-auto space-y-6 lg:mx-4">
-        {/* HERO */}
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-5">
-          {/* LEFT HERO */}
-          <div className="relative rounded-xl overflow-hidden border border-black/5 min-h-[320px] shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-            <img
-              src="/assets/gen2.jpg"
-              alt="Workout planning"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
 
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/90 via-black/70 to-black/20" />
+      <div className="max-w-[1536px] mx-auto px-1 space-y-5">
 
-            <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-between">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.16em] text-orange-300 font-semibold mb-4">
-                  Workout Blueprint
-                </p>
+       
 
-                <h3 className="text-3xl md:text-5xl font-[650] text-white leading-tight max-w-xl tracking-tight">
-                  Build your next session with precision and intent.
-                </h3>
-              </div>
+        {/* WORKFLOW SECTION */}
+<div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
 
-              <div className="grid grid-cols-2 gap-4 max-w-md">
-                <div className="rounded-lg border border-white/10 bg-white/10 backdrop-blur-sm p-4">
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-white/60 mb-2">
-                    Split
-                  </p>
+  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
 
-                  <p className="text-sm md:text-base font-semibold text-white capitalize">
-                    {selectedSplitLabel}
-                  </p>
-                </div>
+    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-900 mb-3">
+      Step 01 | Split
+    </p>
 
-                <div className="rounded-lg border border-white/10 bg-white/10 backdrop-blur-sm p-4">
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-white/60 mb-2">
-                    Goal
-                  </p>
+    <h3 className="text-xl font-semibold capitalize text-black leading-tight">
+      bodybuilder split
+    </h3>
 
-                  <p className="text-sm md:text-base font-semibold text-white capitalize">
-                    {selectedGoalLabel}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+  </div>
 
-          {/* RIGHT STATS */}
-          <div className="grid grid-cols-2 gap-5">
-            <div className="rounded-lg bg-[#111111] text-white border border-black p-5 shadow-[0_6px_24px_rgba(0,0,0,0.05)]">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-white/60 mb-2">
-                Muscles Picked
-              </p>
+  <div className="rounded-xl border border-white/10 bg-black backdrop-blur-xl p-5">
 
-              <p className="text-3xl font-semibold text-orange-400">
-                {muscles.length}
-              </p>
-            </div>
+    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-100 mb-3">
+      Step 02 | Goal
+    </p>
 
-            <div className="rounded-lg bg-white border border-black/5 p-5 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-gray-500 mb-2">
-                Training Bias
-              </p>
+    <h3 className="text-xl font-semibold capitalize text-white leading-tight">
+      cardiovascular endurance
+    </h3>
 
-              <p className="text-base font-semibold text-[#2f2a24]">
-                {workoutIntensity}
-              </p>
-            </div>
+  </div>
 
-            <div className="col-span-2 rounded-xl bg-white border border-black/5 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-gray-500 mb-3">
-                Selected Split Summary
-              </p>
+  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
 
-              <p className="text-sm md:text-base text-[#4f4a43] leading-relaxed">
-                {splitDescriptions[split] ||
-                  "Choose your split and start building."}
-              </p>
-            </div>
-          </div>
-        </div>
+    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-900 mb-3">
+      Step 03 | Target
+    </p>
 
-        {/* SPLIT */}
-        <div className="rounded-xl border border-black/5 bg-white p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-          <SectionStepHeader
-            index={"01"}
-            title={"Pick your split"}
-            description={"Select the training structure you want to follow."}
-          />
+    <h3 className="text-xl font-semibold capitalize text-black leading-tight">
+      1 selected below
+    </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {Object.keys(WORKOUTS).map((type, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setSplit(type);
-                  setMuscles([]);
-                }}
-                className={`group relative min-h-[90px] px-5 py-5 rounded-lg border text-left font-semibold transition-all duration-300
+  </div>
 
-                ${
-                  split === type
-                    ? "bg-orange-600 text-white border-orange-600 shadow-lg shadow-orange-100"
-                    : "bg-white text-[#2f2a24] border-black/5 hover:bg-orange-50 hover:border-orange-200"
-                }
-                `}
-              >
-                <span className="block text-[10px] uppercase tracking-[0.14em] mb-2 opacity-70">
-                  Split
-                </span>
+</div> 
 
-                <p className="capitalize text-sm sm:text-base leading-tight">
-                  {type.replaceAll("_", " ")}
-                </p>
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* MAIN */}
+        <div className="space-y-5">
 
-        {/* TARGETS */}
-        <div className="rounded-xl border border-black/10 bg-[url('../assets/np.jpg')] bg-cover bg-center text-white p-6 md:p-8 overflow-hidden relative">
-          <div className="absolute inset-0 bg-black/55" />
+          {/* TOP */}
+          <div className="grid lg:grid-cols-2 gap-5">
 
-          <div className="relative z-10">
-            <SectionStepHeader
-              index={"02"}
-              title={"Lock on targets"}
-              description={
-                split === "individual"
-                  ? "You can choose up to three muscle groups."
-                  : "Choose one muscle group."
-              }
-              tone="dark"
-            />
+            {/* STEP 1 */}
+            <div className="stroq-panel rounded-xl p-5">
 
-            <div className="relative max-w-4xl mx-auto">
-              <div className="rounded-lg bg-white text-black overflow-hidden border border-black/10 shadow-[0_20px_50px_rgba(0,0,0,0.08)] backdrop-blur-sm">
-                <button
-                  onClick={toggleModal}
-                  className="relative w-full py-5 px-5 flex items-center justify-center text-center"
-                >
-                  <p className="uppercase text-xs sm:text-sm font-medium tracking-[0.12em] pr-8 break-words">
-                    {muscles.length === 0
-                      ? "Select muscle groups"
-                      : muscles.join(" | ")}
-                  </p>
+              <SectionStepHeader
+                index="01"
+                title="Training split"
+                description="Select your preferred workout structure."
+              />
 
-                  <FaCaretDown
-                    className={`absolute right-5 top-1/2 -translate-y-1/2 text-orange-600 transition-transform duration-300 ${
-                      showModal ? "rotate-180" : ""
+              <div className="space-y-3 mt-6">
+
+                {Object.keys(WORKOUTS).map((type, index) => (
+
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSplit(type);
+                      setMuscles([]);
+                    }}
+                    className={`w-full text-left rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${
+                      split === type
+                        ? "bg-[#111] text-white border-[#111]"
+                        : "bg-[#f8f8f8] border-black/5 hover:border-black/10 text-black"
                     }`}
-                  />
-                </button>
+                  >
 
-                {showModal && (
-                  <div className="border-t border-black/10 p-4 grid grid-cols-2 sm:grid-cols-3 gap-4 bg-white">
-                    {(split === "individual"
-                      ? WORKOUTS[split]
-                      : Object.keys(WORKOUTS[split] || {})
-                    ).map((muscleGroup, muscleGroupIndex) => {
-                      const active = muscles.includes(muscleGroup);
+                    <div className="flex justify-between gap-4">
 
-                      return (
-                        <button
-                          key={muscleGroupIndex}
-                          onClick={() => updateMuscles(muscleGroup)}
-                          className={`relative min-h-[70px] px-4 py-4 rounded-lg text-xs sm:text-sm uppercase tracking-[0.08em] font-semibold transition-all duration-300 border
+                      <div>
 
-                          ${
-                            active
-                              ? "bg-orange-600 text-white border-orange-600"
-                              : "bg-white text-[#222] border-black/10 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600"
-                          }
-                          `}
-                        >
-                          {muscleGroup}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
+                        <p className={`text-[10px] uppercase tracking-[0.16em] mb-2 ${
+                          split === type
+                            ? "text-gray-400"
+                            : "text-gray-500"
+                        }`}>
+                          Split
+                        </p>
+
+                        <h3 className="text-lg font-semibold capitalize tracking-tight mb-2">
+                          {type.replaceAll("_", " ")}
+                        </h3>
+
+                        <p className={`text-sm leading-relaxed ${
+                          split === type
+                            ? "text-gray-300"
+                            : "text-[#666]"
+                        }`}>
+                          {splitDescriptions[type]}
+                        </p>
+
+                      </div>
+
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                        split === type
+                          ? "bg-white text-black"
+                          : "bg-[#111] text-white"
+                      }`}>
+                        <ArrowRight size={16} />
+                      </div>
+
+                    </div>
+
+                  </button>
+
+                ))}
+
               </div>
+
             </div>
+
+            {/* STEP 2 */}
+            <div className="bg-[#0d0d0d] text-white rounded-xl p-5 relative overflow-hidden shadow-[0_22px_70px_rgba(0,0,0,0.14)]">
+
+              <div className="absolute bottom-0 right-0 w-[260px] h-[260px] bg-[#fc5200]/6 blur-3xl rounded-full" />
+
+              <div className="relative z-10">
+
+                <SectionStepHeader
+                  index="02"
+                  title="Performance goal"
+                  description="Choose the outcome you want to optimize."
+                  tone="dark"
+                />
+
+                <div className="space-y-3 mt-6">
+
+                  {Object.keys(SCHEMES).map((scheme, index) => (
+
+                    <button
+                      key={index}
+                      onClick={() => setGoal(scheme)}
+                      className={`w-full rounded-xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                        goal === scheme
+                          ? "bg-white text-black border-white"
+                          : "bg-white/5 border-white/10 text-white"
+                      }`}
+                    >
+
+                      <div className="flex justify-between gap-4">
+
+                        <div>
+
+                          <p className={`text-[10px] uppercase tracking-[0.16em] mb-2 ${
+                            goal === scheme
+                              ? "text-gray-500"
+                              : "text-gray-400"
+                          }`}>
+                            Goal
+                          </p>
+
+                          <h3 className="text-lg font-semibold capitalize tracking-tight">
+                            {scheme.replaceAll("_", " ")}
+                          </h3>
+
+                        </div>
+
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                          goal === scheme
+                            ? "bg-[#111] text-white"
+                            : "bg-white text-black"
+                        }`}>
+                          <Flame size={16} strokeWidth={2.2} />
+                        </div>
+
+                      </div>
+
+                    </button>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
 
-        {/* GOALS */}
-        <div className="rounded-xl border border-black/5 bg-white p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-          <SectionStepHeader
-            index={"03"}
-            title={"Choose your goal"}
-            description={"Define your training output for this session."}
-          />
+          {/* STEP 3 */}
+          <div className="stroq-panel rounded-xl p-5">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {Object.keys(SCHEMES).map((scheme, index) => (
-              <button
-                key={index}
-                onClick={() => setGoal(scheme)}
-                className={`relative min-h-[90px] px-5 py-5 rounded-lg border text-left font-semibold transition-all duration-300
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between lg:pl-136 gap-6 mb-8">
 
-                ${
-                  goal === scheme
-                    ? "bg-orange-600 text-white border-orange-600 shadow-lg shadow-orange-100"
-                    : "bg-white text-[#2f2a24] border-black/5 hover:bg-orange-50 hover:border-orange-200"
+              <SectionStepHeader
+                index="03"
+                title="Muscle targeting"
+                description={
+                  split === "individual"
+                    ? "Select up to three muscle groups."
+                    : "Choose one muscle group."
                 }
-                `}
-              >
-                <span className="block text-[10px] uppercase tracking-[0.14em] mb-2 opacity-70">
-                  Goal
-                </span>
+              />
 
-                <p className="capitalize text-sm sm:text-base leading-tight">
-                  {scheme.replaceAll("_", " ")}
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-[#111] text-white w-fit">
+
+                <div className="w-7 h-7 rounded-lg bg-white text-black flex items-center justify-center">
+                  <Activity size={14} strokeWidth={2.2} />
+                </div>
+
+                {workoutIntensity}
+
+              </div>
+
+            </div>
+
+            {/* SELECTOR */}
+            <button
+              onClick={toggleModal}
+              className="w-full rounded-xl border border-black/10 bg-[#f8f8f8] p-5 flex items-center justify-between gap-5"
+            >
+
+              <div className="text-left">
+
+                <p className="text-[10px] uppercase tracking-[0.16em] text-gray-500 mb-2">
+                  Muscle Selection
                 </p>
-              </button>
-            ))}
+
+                <p className="text-lg font-semibold capitalize text-[#111]">
+
+                  {muscles.length === 0
+                    ? "Choose muscle groups"
+                    : muscles.join(" • ")}
+
+                </p>
+
+              </div>
+
+              <div className="w-11 h-11 rounded-xl bg-[#111] text-white flex items-center justify-center shrink-0">
+
+                <FaCaretDown
+                  className={`transition-transform duration-300 ${
+                    showModal ? "rotate-180" : ""
+                  }`}
+                />
+
+              </div>
+
+            </button>
+
+            {/* MUSCLES */}
+            {showModal && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-5">
+
+                {(split === "individual"
+                  ? WORKOUTS[split]
+                  : Object.keys(WORKOUTS[split] || {})
+                ).map((muscleGroup, muscleGroupIndex) => {
+
+                  const active =
+                    muscles.includes(muscleGroup);
+
+                  return (
+                    <button
+                      key={muscleGroupIndex}
+                      onClick={() =>
+                        updateMuscles(muscleGroup)
+                      }
+                      className={`min-h-[92px] rounded-xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+                        active
+                          ? "bg-[#111] text-white border-[#111]"
+                          : "bg-[#f8f8f8] border-black/5 hover:border-black/10 text-black"
+                      }`}
+                    >
+
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
+                        active
+                          ? "bg-white text-black"
+                          : "bg-[#111] text-white"
+                      }`}>
+                        <Check size={15} strokeWidth={2.5} />
+                      </div>
+
+                      <p className="text-base font-semibold capitalize tracking-tight leading-tight">
+                        {muscleGroup}
+                      </p>
+
+                    </button>
+                  );
+                })}
+
+              </div>
+            )}
+
           </div>
+
+          {/* BUTTON */}
+          <button
+            onClick={updateWorkout}
+            className="w-full h-14 rounded-xl bg-[#111] hover:bg-[#fc5200] transition-all duration-300 text-white text-base font-semibold flex items-center justify-center gap-3 shadow-[0_18px_45px_rgba(0,0,0,0.12)]"
+          >
+
+            Formulate Workout
+
+            <ArrowRight size={20} />
+
+          </button>
+
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center justify-center pt-2 pb-8">
-          <Button
-            text="Formulate Workout"
-            onClick={updateWorkout}
-            className="w-full py-4 text-lg font-semibold"
-          />
-        </div>
       </div>
+
     </SectionWrapper>
   );
 };

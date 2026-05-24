@@ -3,7 +3,7 @@
     <div>
       <button
         onClick={onClick || func}
-        className="px-12 py-4 rounded-lg bg-neutral-950 text-white border border-black uppercase font-bold duration-200"
+        className="px-12 py-4 rounded-xl bg-neutral-950 text-white border border-black uppercase font-bold duration-200"
       >
         {text}
       </button>
@@ -12,5 +12,3 @@
 };
 
 export default Button;
-
-

@@ -1,104 +1,89 @@
 ﻿import { useState } from "react";
-
 import {
+  Activity,
+  ArrowRight,
+  Check,
+  ChevronRight,
   Dumbbell,
   Flame,
-  Activity,
-  Check,
-  ArrowRight,
-  ShieldCheck,
+  TimerReset,
 } from "lucide-react";
 
 const tracks = [
   {
     id: "mass-gain",
     title: "Mass Gain",
-    subtitle: "Build muscle with controlled calorie surplus",
-    color: "bg-[#111111] text-white border-white/10",
-    accent: "text-orange-500",
-    icon: <Dumbbell size={24} />,
-    bullets: [
-      "Stay in a 250-400 kcal daily surplus, not a dirty bulk.",
-      "Target protein at 1.6-2.2g per kg bodyweight every day.",
-      "Use progressive overload on core lifts each week.",
-      "Prioritize compound exercises first, isolation after.",
-      "Train each major muscle group 2 times per week.",
-      "Sleep 7-9 hours for recovery and growth hormones.",
+    subtitle: "Strength + hypertrophy focused progression",
+    image: "/assets/gen2.jpg",
+    icon: <Dumbbell size={20} strokeWidth={2.2} />,
+    description:
+      "Focused on progressive overload, muscle growth, and strength adaptation with structured recovery.",
+
+    principles: [
+      "Train heavy compound movements.",
+      "Increase weekly training volume.",
+      "Prioritize calorie surplus.",
+      "Optimize post-workout recovery.",
     ],
-    sampleSplit: [
-      "Day 1: Upper (push focus)",
-      "Day 2: Lower",
-      "Day 3: Rest or light walk",
-      "Day 4: Upper (pull focus)",
-      "Day 5: Lower + core",
-      "Day 6-7: Active recovery",
+
+    weekly: [
+      "Push Strength",
+      "Pull Hypertrophy",
+      "Leg Power",
+      "Upper Volume",
+      "Recovery Session",
     ],
   },
 
   {
     id: "fat-loss",
     title: "Weight Loss",
-    subtitle: "Preserve muscle while dropping body fat",
-    color: "bg-white text-[#2f2a24] border-black/5",
-    accent: "text-orange-600",
-    icon: <Flame size={24} />,
-    bullets: [
-      "Use a moderate 300-500 kcal deficit for sustainable results.",
-      "Keep protein high: 1.8-2.4g per kg bodyweight.",
-      "Lift weights 3-5 days per week to protect muscle.",
-      "Add 8,000-12,000 daily steps before adding hard cardio.",
-      "Use short cardio blocks 2-4 times weekly.",
-      "Track waist, strength, and weekly average weight together.",
+    subtitle: "Conditioning and fat reduction",
+    image: "/assets/gen6.jpg",
+    icon: <Flame size={20} strokeWidth={2.2} />,
+    description:
+      "High movement frequency and conditioning focused on sustainable fat reduction and endurance.",
+
+    principles: [
+      "Maintain calorie deficit.",
+      "Increase movement frequency.",
+      "Use conditioning strategically.",
+      "Preserve lean muscle mass.",
     ],
-    sampleSplit: [
-      "Day 1: Full body + incline walk",
-      "Day 2: Steps and mobility",
-      "Day 3: Full body + intervals",
-      "Day 4: Steps and stretching",
-      "Day 5: Full body + easy cardio",
-      "Day 6-7: Recovery and meal prep",
+
+    weekly: [
+      "HIIT Conditioning",
+      "Upper Body",
+      "Mobility + Core",
+      "Lower Body",
+      "Cardio Intervals",
     ],
   },
 
   {
     id: "recomposition",
     title: "Recomposition",
-    subtitle: "Lose fat and gain muscle simultaneously",
-    color: "bg-orange-600 text-white border-orange-600",
-    accent: "text-orange-100",
-    icon: <Activity size={24} />,
-    bullets: [
-      "Keep calories near maintenance with high protein.",
-      "Prioritize strength progress over scale changes.",
-      "Use consistent meal timing around workouts.",
-      "Focus on recovery quality and sleep.",
-      "Take progress photos every 2-4 weeks.",
-      "Best suited for beginners and returners.",
+    subtitle: "Build muscle while losing fat",
+    image: "/assets/gen7.jpg",
+    icon: <Activity size={20} strokeWidth={2.2} />,
+    description:
+      "Balanced training structure combining hypertrophy, conditioning, and recovery optimization.",
+
+    principles: [
+      "Balance strength and cardio.",
+      "Maintain high protein intake.",
+      "Track progressive overload.",
+      "Focus on recovery quality.",
     ],
-    sampleSplit: [
-      "Day 1: Upper body",
-      "Day 2: Lower body",
-      "Day 3: Rest + steps",
-      "Day 4: Upper body",
-      "Day 5: Lower body",
-      "Day 6-7: Active recovery",
+
+    weekly: [
+      "Upper Strength",
+      "Conditioning",
+      "Lower Hypertrophy",
+      "Athletic Training",
+      "Recovery + Mobility",
     ],
   },
-];
-
-const beginnerChecklist = [
-  "Master squat, hinge, push, and pull patterns first.",
-  "Warm up properly before heavy training.",
-  "Keep 1-3 reps in reserve on most sets.",
-  "Track workouts consistently for measurable progress.",
-  "Avoid maxing out every week.",
-  "Use controlled tempo and full range of motion.",
-  "Rest properly between compound movements.",
-  "Stay consistent for at least 12 weeks.",
-  "Hydrate throughout the entire day.",
-  "Deload every 6-8 hard weeks if needed.",
-  "Focus on meal consistency over perfection.",
-  "Stop exercises causing sharp joint pain.",
 ];
 
 const WorkoutGuide = () => {
@@ -108,336 +93,251 @@ const WorkoutGuide = () => {
     tracks.find((track) => track.id === selectedTrack) || tracks[0];
 
   return (
-    <section className="min-h-screen bg-white text-[#2f2a24] pt-20 pb-20 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <main className="bg-white text-[#111] overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="w-full min-h-[calc(100svh-80px)] px-3 sm:px-4 lg:px-6 pt-20 pb-4">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 xl:grid-cols-[0.95fr_0.7fr_0.95fr] gap-4 items-stretch">
+            {/* LEFT CARD */}
+            <div className="bg-black rounded-xl p-6 sm:p-8 lg:p-10 flex flex-col justify-start">
+              <div>
+                <h1 className="text-white uppercase font-black leading-[0.85] tracking-[-0.07em] text-[clamp(3rem,5vw,6.5rem)] max-w-[5ch]">
+                  Take Your Fitness To The Next Level
+                </h1>
 
-      <div className="max-w-8xl mx-auto space-y-10">
+                <p className="text-gray-400 leading-relaxed mt-5 max-w-md text-sm sm:text-base lg:text-lg">
+                  Structured strength systems, recovery optimization, and
+                  elite-level programming for real athletic performance.
+                </p>
+              </div>
+            </div>
 
-        {/* HERO */}
-        <div className="relative overflow-hidden rounded-xl bg-white">
+            {/* CENTER */}
+            <div className="flex flex-col gap-4">
+              {/* IMAGE */}
+              <div className="relative rounded-xl overflow-hidden min-h-[240px] sm:min-h-[300px] xl:flex-1">
+                <img
+                  src="/assets/gen5.webp"
+                  alt=""
+                  className="w-full h-full object-cover absolute inset-0"
+                />
 
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="absolute inset-0 bg-black/10" />
+              </div>
 
-            {/* LEFT */}
-            <div className="p-7 sm:p-10 lg:p-14">
+              {/* STATS */}
+              <div className="bg-orange-600 rounded-xl p-5 sm:p-6 text-white">
+                <div className="text-center">
+                  <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-none font-black tracking-[-0.05em]">
+                  4-5
+                  </h2>
 
-              <p className="uppercase tracking-[0.25em] text-[11px] font-semibold text-orange-600 mb-5">
-                Workout Dashboard
-              </p>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl leading-[0.92] tracking-[-0.05em] font-[650] max-w-2xl">
-                Train with{" "}
-                <span className="text-orange-600">
-                  structure
-                </span>{" "}
-                & progression.
-              </h1>
-
-              <p className="mt-6 text-[#6d675f] text-sm sm:text-base leading-relaxed max-w-xl">
-                Choose your training path, follow structured weekly
-                progression, and build sustainable strength, muscle,
-                and conditioning.
-              </p>
-
-              {/* QUICK STATS */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
-
-                <div className="rounded-md bg-[#f8f7f4] border border-black/5 p-5">
-                  <p className="text-xs text-[#7b746c] mb-2">
-                    Training Days
+                  <p className="text-white/70 text-sm sm:text-base mt-2">
+                   Training Days per Week
                   </p>
-
-                  <h3 className="text-3xl font-semibold">
-                    4-5
-                  </h3>
                 </div>
 
-                <div className="rounded-md bg-[#f8f7f4] border border-black/5 p-5">
-                  <p className="text-xs text-[#7b746c] mb-2">
+                <div className="h-[1px] w-full bg-white/10 my-5" />
+
+                <div className="text-center">
+                  <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-none font-black tracking-[-0.05em]">
+                   7-9h
+                  </h2>
+
+                  <p className="text-white/70 text-sm sm:text-base mt-2">
                     Recovery
                   </p>
-
-                  <h3 className="text-3xl font-semibold">
-                    7-9h
-                  </h3>
                 </div>
-
-                <div className="rounded-md bg-[#111111] text-white p-5 col-span-2 sm:col-span-1">
-                  <p className="text-xs text-gray-400 mb-2">
-                    Progress
-                  </p>
-
-                  <h3 className="text-3xl font-semibold">
-                    Weekly
-                  </h3>
-                </div>
-
               </div>
             </div>
 
-            {/* RIGHT */}
-            <div className="relative min-h-[380px] lg:min-h-[630px]">
-
+            {/* RIGHT IMAGE */}
+            <div className="relative rounded-xl overflow-hidden min-h-[340px] xl:min-h-[620px]">
               <img
-                src="../assets/gen5.webp"
-                alt="workout"
-                className="w-full h-full object-cover"
+                src="/assets/np.jpg"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-              {/* FLOATING PANEL */}
-              <div className="absolute bottom-6 left-6 right-6 rounded-lg bg-[#111111]/90 backdrop-blur-xl border border-white/10 p-6 text-white">
-
-                <div className="flex items-center justify-between gap-4 mb-6">
-
-                  <div>
-                    <p className="text-xs text-gray-400 mb-2">
-                      Current Focus
-                    </p>
-
-                    <h3 className="text-3xl font-semibold">
-                      Strength + Hypertrophy
-                    </h3>
-                  </div>
-
-                  <div className="w-16 h-16 rounded-md bg-orange-500/15 flex items-center justify-center text-orange-500">
-                    <Dumbbell size={30} />
-                  </div>
-
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Volume
-                    </p>
-
-                    <h4 className="text-xl font-semibold mt-1">
-                      High
-                    </h4>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Intensity
-                    </p>
-
-                    <h4 className="text-xl font-semibold mt-1">
-                      Moderate
-                    </h4>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Frequency
-                    </p>
-
-                    <h4 className="text-xl font-semibold mt-1">
-                      5x
-                    </h4>
-                  </div>
-
-                </div>
+              {/* FLOATING CARD */}
+              <div className="absolute bottom-5 left-5 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-xl p-4 text-white max-w-[240px]">
+                <h3 className="text-lg sm:text-2xl font-semibold leading-tight">
+                  Strength + Athletic Conditioning
+                </h3>
               </div>
+
+             
+             
             </div>
           </div>
         </div>
+      </section>
 
-        {/* TRACK SELECTOR */}
-        <div className="grid md:grid-cols-3 gap-6">
+      {/* TRAINING MODES */}
+      <section className="px-4 sm:px-6 lg:px-8 py-14">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-10">
+            <p className="uppercase tracking-[0.2em] text-[11px] text-[#fc5200] font-semibold mb-3">
+              Training Modes
+            </p>
 
-          {tracks.map((track) => (
-            <button
-              key={track.id}
-              onClick={() => setSelectedTrack(track.id)}
-              className={`rounded-lg border p-7 text-left transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.03)]
-              
-              ${
-                selectedTrack === track.id
-                  ? "border-orange-500 scale-[1.01]"
-                  : "border-black/5 hover:border-orange-200"
-              }
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+              Choose a structured training pathway.
+            </h2>
+          </div>
 
-              ${track.color}
-              `}
-            >
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {tracks.map((track) => (
+              <button
+                key={track.id}
+                onClick={() => setSelectedTrack(track.id)}
+                className={`relative overflow-hidden rounded-xl transition-all duration-300 shadow-[0_18px_50px_rgba(0,0,0,0.08)] ${
+                  selectedTrack === track.id
+                    ? "scale-[1.02]"
+                    : "opacity-90 hover:opacity-100"
+                }`}
+              >
+                <div className="relative h-[240px]">
+                  <img
+                    src={track.image}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
 
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                  <div className="absolute inset-0 p-5 flex flex-col justify-between text-white">
+                    <div className="flex justify-between">
+                      <div className="w-11 h-11 rounded-xl bg-white text-black flex items-center justify-center">
+                        {track.icon}
+                      </div>
+
+                      <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-xl flex items-center justify-center">
+                        <ArrowRight size={18} />
+                      </div>
+                    </div>
+
+                    <div className="text-left">
+                      <h3 className="text-3xl font-semibold mb-2">
+                        {track.title}
+                      </h3>
+
+                      <p className="text-gray-300">{track.subtitle}</p>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ACTIVE SYSTEM */}
+      <section className="px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-8">
+            <p className="uppercase tracking-[0.2em] text-[11px] text-[#fc5200] font-semibold mb-3">
+              Selected Framework
+            </p>
+
+            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
+              {activeTrack.title}
+            </h2>
+
+            <p className="mt-5 text-[#666] text-lg leading-relaxed max-w-3xl">
+              {activeTrack.description}
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+            {/* PRINCIPLES */}
+            <div className="rounded-[30px] p-6 sm:p-8 bg-[#ecece7]">
               <div className="flex items-center justify-between mb-8">
+                <div>
+                  <p className="uppercase tracking-[0.2em] text-[11px] text-[#fc5200] font-semibold mb-3">
+                    Core Principles
+                  </p>
 
-                <div className="w-14 h-14 rounded-md bg-white/10 backdrop-blur-md flex items-center justify-center">
-                  {track.icon}
+                  <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                    Training Rules
+                  </h3>
                 </div>
 
-                <ArrowRight size={20} />
+                <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center">
+                  {activeTrack.icon}
+                </div>
               </div>
-
-              <p className={`text-[11px] uppercase tracking-[0.2em] mb-3 ${track.accent}`}>
-                Training Track
-              </p>
-
-              <h2 className="text-2xl font-semibold mb-3">
-                {track.title}
-              </h2>
-
-              <p className="text-sm leading-relaxed opacity-80">
-                {track.subtitle}
-              </p>
-
-            </button>
-          ))}
-        </div>
-
-        {/* ACTIVE TRACK */}
-        <div className={`rounded-xl border overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] ${activeTrack.color}`}>
-
-          <div className="p-7 sm:p-10 border-b border-white/10">
-
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-
-              <div>
-
-                <p className={`uppercase tracking-[0.2em] text-[11px] mb-3 ${activeTrack.accent}`}>
-                  Selected Framework
-                </p>
-
-                <h2 className="text-4xl font-[650] tracking-tight">
-                  {activeTrack.title}
-                </h2>
-
-              </div>
-
-              <div className="w-16 h-16 rounded-md bg-white/10 flex items-center justify-center">
-                {activeTrack.icon}
-              </div>
-
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-0">
-
-            {/* RULES */}
-            <div className="p-7 sm:p-10 border-b lg:border-b-0 lg:border-r border-white/10">
-
-              <p className="uppercase tracking-[0.2em] text-[11px] opacity-70 mb-6">
-                Core Rules
-              </p>
 
               <div className="space-y-5">
-
-                {activeTrack.bullets.map((tip) => (
+                {activeTrack.principles.map((item) => (
                   <div
-                    key={tip}
-                    className="flex items-start gap-4"
+                    key={item}
+                    className="flex items-start gap-4 border-b border-black/5 pb-5"
                   >
-
-                    <div className="min-w-[38px] h-[38px] rounded-md bg-white/10 flex items-center justify-center">
-                      <Check size={18} />
-                    </div>
-
-                    <p className="leading-relaxed opacity-90">
-                      {tip}
-                    </p>
-
-                  </div>
-                ))}
-
-              </div>
-            </div>
-
-            {/* SPLIT */}
-            <div className="p-7 sm:p-10">
-
-              <p className="uppercase tracking-[0.2em] text-[11px] opacity-70 mb-6">
-                Weekly Template
-              </p>
-
-              <div className="space-y-4">
-
-                {activeTrack.sampleSplit.map((day, index) => (
-                  <div
-                    key={day}
-                    className="flex items-center gap-5 rounded-md bg-white/5 border border-white/10 p-5"
-                  >
-
-                    <div className="min-w-[42px] h-[42px] rounded-md bg-orange-500/15 text-orange-400 flex items-center justify-center font-semibold">
-                      {index + 1}
-                    </div>
-
-                    <p className="leading-relaxed">
-                      {day}
-                    </p>
-
-                  </div>
-                ))}
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CHECKLIST */}
-        <div className="rounded-xl bg-white border border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.04)] overflow-hidden">
-
-          <div className="p-7 sm:p-10 border-b border-black/5">
-
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-
-              <div>
-
-                <p className="uppercase tracking-[0.22em] text-[11px] text-orange-600 font-semibold mb-3">
-                  Beginner Essentials
-                </p>
-
-                <h2 className="text-3xl md:text-4xl font-[650] tracking-tight">
-                  Build fundamentals before advanced training.
-                </h2>
-
-              </div>
-
-              <div className="w-16 h-16 rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
-                <ShieldCheck size={30} />
-              </div>
-
-            </div>
-          </div>
-
-          <div className="p-6 sm:p-10 bg-[#fcfcfc]">
-
-            <div className="grid md:grid-cols-2 gap-5">
-
-              {beginnerChecklist.map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-lg border border-black/5 bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
-                >
-
-                  <div className="flex items-start gap-4">
-
-                    <div className="min-w-[42px] h-[42px] rounded-md bg-orange-50 text-orange-600 flex items-center justify-center font-semibold">
-                      {String(index + 1).padStart(2, "0")}
+                    <div className="w-11 h-11 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
+                      <Check size={18} strokeWidth={2.5} />
                     </div>
 
                     <div>
+                      <h4 className="text-lg font-semibold mb-1">{item}</h4>
 
-                      <p className="text-[11px] uppercase tracking-[0.2em] text-orange-600 font-semibold mb-2">
-                        Essential Rule
+                      <p className="text-[#666]">
+                        Structured progression and intelligent recovery create
+                        long-term athletic results.
                       </p>
-
-                      <p className="text-[#4f4a43] leading-relaxed">
-                        {item}
-                      </p>
-
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
 
+            {/* WEEKLY */}
+            <div className="bg-black text-white rounded-xl p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-60 h-60 bg-[#fc5200]/20 blur-3xl rounded-full" />
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <p className="uppercase tracking-[0.2em] text-[11px] text-[#fc5200] font-semibold mb-3">
+                      Weekly Structure
+                    </p>
+
+                    <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                      Performance Split
+                    </h3>
+                  </div>
+
+                  <div className="w-14 h-14 rounded-xl bg-white text-black flex items-center justify-center">
+                    <TimerReset size={22} />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {activeTrack.weekly.map((item, index) => (
+                    <div
+                      key={item}
+                      className="flex items-center justify-between bg-white/5 border border-white/10 rounded-2xl p-4"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-11 h-11 rounded-xl bg-white text-black flex items-center justify-center font-semibold">
+                          {index + 1}
+                        </div>
+
+                        <p className="text-lg">{item}</p>
+                      </div>
+
+                     
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

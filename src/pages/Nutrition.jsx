@@ -1,536 +1,439 @@
 ﻿import { useMemo, useState } from "react";
-import { useNutrition } from "../components/context/NutritionProvider";
+
+import { Moon, Search } from "lucide-react";
+
+import { useNutrition } from "../providers/nutritionContext";
+
 import NutritionCard from "../features/workout/components/NutritionCard";
 
-import {
-  Droplets,
-  Flame,
-  Drumstick,
-  Wheat,
-  Salad,
-  Check,
-  AlertTriangle,
-  Search,
-} from "lucide-react";
+const stats = [
+  { label: "Calories", value: "2450" },
 
-const nutritionPillars = [
-  {
-    title: "Protein Priority",
-    desc: "Build lean muscle and improve recovery with quality protein sources.",
-    target: "1.6 - 2.2g/kg",
-    icon: <Drumstick size={22} />,
-  },
-  {
-    title: "Smart Carbs",
-    desc: "Fuel workouts and improve performance with strategic carb timing.",
-    target: "2 - 5g/kg",
-    icon: <Wheat size={20} />,
-  },
-  {
-    title: "Healthy Fats",
-    desc: "Support hormones, recovery, and sustainable energy levels.",
-    target: "0.6 - 1g/kg",
-    icon: <Salad size={20} />,
-  },
+  { label: "Protein", value: "162g" },
+
+  { label: "Water", value: "3.2L" },
+
+  { label: "Recovery", value: "92%" },
 ];
 
-const mealRules = [
-  "Build every meal around protein first.",
-  "Use minimally processed foods 80% of the time.",
-  "Prep meals twice weekly for consistency.",
-  "Keep hydration stable throughout the day.",
-  "Do not skip post-workout nutrition.",
-];
+const nutritionMistakes = [
+  {
+    title: "Skipping Protein",
 
-const beginnerMistakes = [
-  "Extreme calorie cuts causing muscle loss.",
-  "Ignoring protein intake completely.",
-  "Changing diet plans every week.",
-  "Not tracking hidden calories and oils.",
-  "Poor hydration during training phases.",
-];
+    desc: "Many beginners focus only on calories and ignore protein intake.",
+  },
 
-const quickFoods = ["Egg", "Drumstick", "Rice", "Banana", "Oats"];
+  {
+    title: "Drinking Less Water",
+
+    desc: "Dehydration reduces workout performance and endurance.",
+  },
+
+  {
+    title: "No Meal Timing",
+
+    desc: "Long gaps without food reduce energy levels .",
+  },
+
+  {
+    title: "Ignoring Sleep",
+
+    desc: "Recovery and muscle growth depend heavily on sleep.",
+  },
+];
 
 const Nutrition = () => {
-  const [weight, setWeight] = useState(70);
+  const [weight, setWeight] = useState(72);
+
   const [food, setFood] = useState("");
 
   const { fetchNutrition } = useNutrition();
 
   const hydrationTarget = useMemo(() => {
     const liters = (Number(weight) || 0) * 0.035;
+
     return Math.max(2, liters).toFixed(1);
   }, [weight]);
 
   const handleSearch = () => {
     if (!food.trim()) return;
+
     fetchNutrition(food);
   };
 
   return (
-    <section className="min-h-screen bg-white text-[#2f2a24] pt-20 pb-20 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <main className="bg-white text-[#111111] overflow-hidden">
+      {/* HERO SECTION */}
 
-      <div className="max-w-8xl mx-auto space-y-6">
+      <section className="pt-10 sm:pt-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1450px] mx-auto">
+          <div className="text-center py-10 sm:py-14 lg:py-10 px-4">
+            <p className="uppercase tracking-[0.25em] text-[11px] font-semibold text-[#fc5200] mb-5">
+              Smart Athlete Nutrition
+            </p>
 
-        {/* HERO */}
-        <div className="relative rounded-xl overflow-hidden bg-white ">
+            <h2 className="text-[2.4rem] sm:text-[3.8rem] lg:text-[5.5rem] leading-[1] tracking-[-0.06em] font-semibold max-w-5xl mx-auto">
+              Every athlete has a
+              <span className="italic font-normal"> unique rhythm </span>
+              in their performance journey.
+            </h2>
 
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <p className="mt-8 text-[#666] text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+              Balanced nutrition, hydration, and recovery are essential for
+              maximizing strength, endurance, and overall athletic performance.
+            </p>
 
-            {/* LEFT */}
-            <div className="p-7 sm:p-10 lg:p-14 z-10">
+            {/* STATS */}
 
-              <p className="uppercase tracking-[0.25em] text-[11px] font-semibold text-orange-600 mb-5">
-                Nutrition Dashboard
-              </p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14 max-w-6xl mx-auto">
+              {stats.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-xl bg-white border border-black/5 p-6"
+                >
+                  <p className="text-[#777] text-xs sm:text-sm mb-3">
+                    {item.label}
+                  </p>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl leading-[0.92] tracking-[-0.05em] font-[650] max-w-2xl">
-                Fuel your body for{" "}
-                <span className="text-orange-600">
-                  strength
-                </span>
-                , recovery & performance.
-              </h1>
-
-              <p className="mt-6 text-[#6d675f] text-sm sm:text-base leading-relaxed max-w-xl">
-                Build sustainable nutrition habits with structured
-                macros, hydration tracking, and intelligent food
-                insights designed for serious progress.
-              </p>
-
-              {/* QUICK CHIPS */}
-              <div className="flex flex-wrap gap-3 mt-10">
-
-                {quickFoods.map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => {
-                      setFood(item);
-                      fetchNutrition(item);
-                    }}
-                    className="px-4 py-2  bg-orange-50 hover:bg-orange-100 transition text-sm font-medium text-orange-700 border border-orange-100"
-                  >
-                    {item}
-                  </button>
-                ))}
-
-              </div>
-            </div>
-
-            {/* RIGHT */}
-            <div className="relative h-full min-h-[350px] lg:min-h-[620px]">
-
-              <img
-                src="/assets/recovery.jpg"
-                alt="nutrition"
-                className="w-full h-full object-cover"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-
-              {/* METRICS */}
-              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-[#111111]/90 rounded-lg p-5 text-white border border-white/10">
-
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-
-                  <div>
-                    <p className="text-xs text-gray-400 mb-1">
-                      Protein Goal
-                    </p>
-
-                    <h3 className="text-2xl font-semibold">
-                      160g
-                    </h3>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400 mb-1">
-                      Calories
-                    </p>
-
-                    <h3 className="text-2xl font-semibold">
-                      2450
-                    </h3>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400 mb-1">
-                      Recovery
-                    </p>
-
-                    <h3 className="text-2xl font-semibold">
-                      92%
-                    </h3>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400 mb-1">
-                      Workout Fuel
-                    </p>
-
-                    <h3 className="text-2xl font-semibold">
-                      High
-                    </h3>
-                  </div>
-
+                  <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                    {item.value}
+                  </h3>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+      </section>
 
-        {/* HYDRATION */}
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6">
+      {/* SMART FOOD ANALYSIS */}
 
-          {/* LEFT */}
-          <div className="bg-[#111111] text-white border border-white/10 rounded-lg p-7 md:p-10 relative overflow-hidden">
+      <section className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="max-w-[1450px] mx-auto bg-white rounded-xl border border-black/5 p-6 lg:p-7">
+          {/* TOP */}
 
-            <div className="absolute top-0 right-0 w-52 h-52 bg-orange-500/10 rounded-full blur-3xl" />
+          <div className="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-6 mb-8">
+            <div>
+              <p className="uppercase tracking-[0.22em] text-[11px] font-semibold text-[#fc5200] mb-4">
+                Smart Food Analysis
+              </p>
 
-            <p className="uppercase tracking-[0.22em] text-[11px] text-orange-500 font-semibold mb-4 relative z-10">
-              Hydration System
-            </p>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.06em] leading-[0.95] font-semibold max-w-4xl">
+                Track your meals with intelligent nutrition insights.
+              </h2>
+            </div>
 
-            <h2 className="text-3xl md:text-4xl font-[650] tracking-[-0.04em] leading-tight mb-5 relative z-10">
-              Your body performs better when hydration stays consistent.
-            </h2>
+            <div className="bg-white rounded-xl border border-black/5 p-5 min-w-[240px]">
+              <p className="text-[#777] text-sm mb-3">Daily Recovery</p>
 
-            <p className="text-gray-400 leading-relaxed max-w-lg relative z-10">
-              Water intake directly impacts strength, recovery,
-              digestion, energy levels, and workout performance.
-            </p>
-
-            <div className="mt-8 flex items-center gap-4 relative z-10">
-
-              <div className="w-14 h-14 rounded-md bg-orange-500/15 flex items-center justify-center text-orange-500">
-                <Droplets size={26} />
-              </div>
-
-              <div>
-                <p className="text-sm text-gray-400">
-                  Recommended Intake
-                </p>
-
-                <h3 className="text-3xl font-semibold">
-                  {hydrationTarget}L
+              <div className="flex items-end gap-2">
+                <h3 className="text-6xl leading-none tracking-[-0.07em] font-semibold">
+                  92
                 </h3>
-              </div>
 
+                <span className="text-[#777] mb-1">%</span>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="bg-white border border-black/5 rounded-xl p-7 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+          {/* SEARCH BAR */}
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div className="bg-white rounded-xl border border-black/5 p-4 flex flex-col lg:flex-row lg:items-center gap-3 mb-5">
+            <div className="relative flex-1">
+              <Search
+                size={18}
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-[#777]"
+              />
 
-              <div>
-                <p className="uppercase tracking-[0.2em] text-[11px] text-orange-600 font-semibold mb-2">
-                  Daily Tracking
-                </p>
-
-                <h3 className="text-2xl md:text-3xl font-[650] tracking-tight">
-                  Hydration Calculator
-                </h3>
-              </div>
-
-              <div className="w-16 h-16 rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
-                <Droplets size={30} />
-              </div>
-
+              <input
+                type="text"
+                placeholder="Search food nutrition..."
+                value={food}
+                onChange={(e) => setFood(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                className="w-full h-14 rounded-xl bg-[#f5f5f2]  border border-black/5 pl-12 pr-4 outline-none text-[15px]"
+              />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <button
+              onClick={handleSearch}
+              className="h-14 px-7 rounded-xl bg-[#111111] text-white font-medium"
+            >
+              Analyze
+            </button>
+          </div>
 
-              {/* INPUT */}
-              <div className="bg-[#f8f7f4] border border-black/5 rounded-lg p-6">
+          {/* NUTRITION CARD */}
 
-                <label className="block text-sm font-medium text-[#5f5952] mb-3">
-                  Enter Weight (kg)
-                </label>
+          <NutritionCard />
+        </div>
+      </section>
+
+      {/* MISTAKES */}
+
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-[1450px] mx-auto">
+          <div className="mb-10">
+            <p className="uppercase tracking-[0.22em] text-[11px] font-semibold text-[#fc5200] mb-4">
+              Nutrition Mistakes
+            </p>
+
+            <h2 className="text-5xl lg:text-6xl tracking-[-0.06em] font-semibold leading-[0.95] max-w-4xl">
+              Beginner mistakes that slow down progress.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {nutritionMistakes.map((item, index) => (
+              <div
+                key={index}
+                className="bg-[#f5f5f2] rounded-xl border border-black/5 p-6 min-h-[240px] flex flex-col justify-between"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#111111] text-white flex items-center justify-center">
+                  <span className="font-semibold">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-semibold tracking-tight mb-4">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-[#666] leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HYDRATION */}
+
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-[1450px] mx-auto bg-[#111111] rounded-xl overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-10 p-8 lg:p-14">
+            {/* LEFT */}
+
+            <div>
+              <p className="uppercase tracking-[0.22em] text-[11px] font-semibold text-[#fc5200] mb-5">
+                Hydration Calculator
+              </p>
+
+              <h2 className="text-5xl lg:text-7xl text-white tracking-[-0.07em] leading-[0.95] font-semibold">
+                Stay hydrated for peak performance.
+              </h2>
+
+              <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-xl">
+                Water intake directly affects recovery, endurance, energy, and
+                workout efficiency throughout the day.
+              </p>
+            </div>
+
+            {/* RIGHT */}
+
+            <div className="w-full flex flex-col lg:flex-row gap-6">
+              {/* LEFT SIDE */}
+
+              <div className="w-full lg:w-1/2 bg-white rounded-2xl p-8 border border-black/5">
+                {/* TOP */}
+
+                <div className="flex items-center justify-between mb-10">
+                  <div>
+                    <p className="text-[#777] text-sm mb-2">
+                      Enter Body Weight
+                    </p>
+
+                    <h3 className="text-6xl font-semibold tracking-tight leading-none">
+                      {weight}
+
+                      <span className="text-2xl text-[#777] ml-2">kg</span>
+                    </h3>
+                  </div>
+
+                  <div className="w-14 h-14 rounded-2xl bg-[#111111] text-white flex items-center justify-center">
+                    <Moon size={24} />
+                  </div>
+                </div>
+
+                {/* INPUT */}
 
                 <input
                   type="number"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
-                  className="w-full h-14 rounded-md border border-black/10 bg-white px-4 outline-none focus:border-orange-500 transition"
+                  placeholder="Enter your body weight"
+                  className="w-full h-14 px-5 rounded-xl border border-black/10 outline-none text-lg font-medium focus:border-[#fc5200]"
                 />
 
-                <p className="mt-4 text-sm text-[#7b746c]">
-                  Formula used:
-                </p>
+                {/* SMALL TEXT */}
 
-                <p className="text-orange-600 font-medium mt-1">
-                  Weight × 0.035
+                <p className="text-sm text-[#888] mt-4">
+                  Example: 70kg body weight
                 </p>
-
               </div>
 
-              {/* RESULT */}
-              <div className="bg-gradient-to-br from-orange-50 to-white border border-orange-100 rounded-lg p-6 flex flex-col justify-between">
+              {/* RIGHT SIDE */}
 
+              <div className="w-full lg:w-1/2 bg-white rounded-xl p-8 border border-black/5 flex flex-col justify-between">
                 <div>
-                  <p className="text-sm text-[#7b746c] mb-3">
-                    Daily Water Target
+                  <p className="text-[#777] text-sm mb-4">
+                    Recommended Daily Water Intake
                   </p>
 
-                  <h2 className="text-5xl font-[650] tracking-tight text-[#2f2a24]">
-                    {hydrationTarget}
-                    <span className="text-2xl ml-1 text-orange-600">
-                      L
-                    </span>
-                  </h2>
-                </div>
+                  <div className="flex items-end gap-3">
+                    <h2 className="text-7xl font-semibold tracking-[-0.07em] leading-none">
+                      {hydrationTarget}
+                    </h2>
 
-                <div className="mt-8">
-
-                  <div className="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-
-                    <div
-                      className="h-full bg-orange-600 rounded-full"
-                      style={{
-                        width: `${Math.min(
-                          (hydrationTarget / 5) * 100,
-                          100
-                        )}%`,
-                      }}
-                    />
-
+                    <span className="text-3xl text-[#777] mb-2">L</span>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* PILLARS */}
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6">
+      {/* Tips */}
 
-          {/* LARGE CARD */}
-          <div className="rounded-lg p-8 bg-gradient-to-br from-white to-orange-50 border border-orange-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-
-            <div className="flex items-center justify-between mb-8">
-
-              <div>
-                <p className="uppercase tracking-[0.2em] text-[11px] text-orange-600 font-semibold mb-2">
-                  Core Foundation
-                </p>
-
-                <h2 className="text-3xl font-[650] tracking-tight">
-                  Nutrition Anchors
-                </h2>
-              </div>
-
-              <div className="w-14 h-14 rounded-md bg-orange-100 text-orange-600 flex items-center justify-center">
-                <Drumstick size={24} />
-              </div>
-
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4">
-              {nutritionPillars[0].title}
-            </h3>
-
-            <p className="text-[#6d675f] leading-relaxed mb-6">
-              {nutritionPillars[0].desc}
+      <section className="w-full bg-white py-24 px-4 sm:px-6  overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          {/* TOP TITLE */}
+          <div className="mb-24">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#777] mb-6">
+              Elite Nutrition Rules
             </p>
 
-            <div className="inline-flex px-5 py-3 rounded-md bg-orange-600 text-white font-medium">
-              {nutritionPillars[0].target}
-            </div>
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.08em] leading-[0.9] max-w-5xl">
+              Meal rules followed by top athletes.
+            </h2>
+
+            <p className="mt-10 text-[#666] text-lg max-w-3xl leading-relaxed">
+              These simple nutrition principles create better recovery, muscle
+              growth, performance, energy stability, and long-term consistency.
+            </p>
           </div>
 
-          {/* SMALL CARDS */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
-
-            {nutritionPillars.slice(1).map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-lg bg-white border border-black/5 p-7 shadow-[0_10px_40px_rgba(0,0,0,0.04)]"
-              >
-
-                <div className="w-12 h-12 rounded-md bg-orange-50 text-orange-600 flex items-center justify-center mb-5">
-                  {pillar.icon}
-                </div>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  {pillar.title}
-                </h3>
-
-                <p className="text-[#6d675f] text-sm leading-relaxed mb-5">
-                  {pillar.desc}
-                </p>
-
-                <div className="inline-flex px-4 py-2 rounded-md bg-orange-50 text-orange-700 text-sm font-medium">
-                  {pillar.target}
-                </div>
-
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* SEARCH + RESULTS */}
-        <div className="rounded-xl bg-white border border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.04)] overflow-hidden">
-
-          {/* HEADER */}
-          <div className="p-7 sm:p-10 border-b border-black/5 bg-gradient-to-r from-white to-orange-50">
-
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
-              {/* LEFT */}
-              <div>
-
-                <p className="uppercase tracking-[0.2em] text-[11px] text-orange-600 font-semibold mb-3">
-                  Smart Nutrition Analysis
-                </p>
-
-                <h2 className="text-3xl md:text-4xl font-[650] tracking-tight mb-4">
-                  Food Nutrition Insights
-                </h2>
-
-                <p className="text-[#6d675f] leading-relaxed max-w-xl">
-                  Analyze calories, protein, carbohydrates, and
-                  fats for your favorite foods instantly.
-                </p>
-
-              </div>
-
-              {/* RIGHT */}
-              <div className="w-full lg:max-w-[520px]">
-
-                <div className="flex flex-col sm:flex-row gap-3">
-
-                  <div className="flex-1 relative">
-
-                    <Search
-                      size={18}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7d766d]"
-                    />
-
-                    <input
-                      type="text"
-                      placeholder="Search food nutrition..."
-                      value={food}
-                      onChange={(e) => setFood(e.target.value)}
-                      onKeyDown={(e) =>
-                        e.key === "Enter" && handleSearch()
-                      }
-                      className="w-full h-14 rounded-md border border-black/10 bg-white pl-12 pr-4 outline-none focus:border-orange-500 transition"
-                    />
-                  </div>
-
-                  <button
-                    onClick={handleSearch}
-                    className="h-14 px-8 rounded-md bg-orange-600 hover:bg-orange-700 transition text-white font-medium"
-                  >
-                    Analyze
-                  </button>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* RESULTS */}
-          <div className="p-6 sm:p-10 bg-[#fcfcfc]">
-            <NutritionCard />
-          </div>
-        </div>
-
-        {/* RULES + MISTAKES */}
-        <div className="grid lg:grid-cols-2 gap-6">
-
-          {/* RULES */}
-          <div className="rounded-xl bg-white border border-black/5 p-8">
-
-            <div className="flex items-center gap-4 mb-8">
-
-              <div className="w-14 h-14 rounded-md bg-orange-100 text-orange-600 flex items-center justify-center">
-                <Check size={24} />
-              </div>
-
-              <div>
-                <p className="uppercase tracking-[0.2em] text-[11px] text-orange-600 font-semibold">
-                  Daily System
-                </p>
-
-                <h2 className="text-2xl font-semibold">
-                  Meal Rules
-                </h2>
-              </div>
-
+          {/* RULES SECTION */}
+          <div className="relative">
+            {/* CENTER BIG TEXT */}
+            <div className="absolute inset-0 hidden lg:flex items-center justify-center pointer-events-none">
+              <h1 className="text-[180px] leading-[0.8] font-black tracking-[-0.12em] text-black/5 text-center">
+                NUTRITION
+                <br />
+                RULES
+              </h1>
             </div>
 
-            <div className="space-y-5">
-
-              {mealRules.map((rule) => (
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-14">
+              {[
+                "Eat protein in every major meal for muscle recovery.",
+                "Drink water immediately after waking up every day.",
+                "Never skip breakfast before intense training sessions.",
+                "80% clean nutrition is enough for long-term progress.",
+                "Prioritize whole foods over processed packaged foods.",
+                "Keep meal timing consistent for stable energy levels.",
+                "Sleep minimum 7-8 hours for proper recovery.",
+                "Do not rely only on supplements for transformation.",
+                "Include fruits and vegetables daily for micronutrients.",
+                "Track progress weekly instead of daily fluctuations.",
+              ].map((rule, index) => (
                 <div
-                  key={rule}
-                  className="flex items-start gap-4 border-b border-black/5 pb-5"
+                  key={index}
+                  className="group border-t border-black pt-5 flex gap-6"
                 >
+                  <span className="text-sm text-[#777] min-w-[70px]">
+                    Rule {(index + 1).toString().padStart(2, "0")}
+                  </span>
 
-                  <div className="min-w-[38px] h-[38px] rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
-                    <Check size={18} />
-                  </div>
-
-                  <p className="text-[#5f5952] leading-relaxed">
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-[-0.05em] leading-tight ">
                     {rule}
-                  </p>
-
+                  </h3>
                 </div>
               ))}
-
             </div>
           </div>
 
-          {/* MISTAKES */}
-          <div className="rounded-xl bg-[#111111] text-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)]">
+          {/* PERFORMANCE TIPS */}
+          <div className="mt-32 relative overflow-hidden">
+            {/* TOP */}
+            <div className="mb-20">
+              <p className="text-sm uppercase tracking-[0.25em] text-[#777] mb-5">
+                Performance Nutrition Tips
+              </p>
 
-            <div className="flex items-center gap-4 mb-8">
-
-              <div className="w-14 h-14 rounded-md bg-white/10 flex items-center justify-center text-orange-500">
-                <AlertTriangle size={24} />
-              </div>
-
-              <div>
-                <p className="uppercase tracking-[0.2em] text-[11px] text-orange-500 font-semibold">
-                  Avoid These
-                </p>
-
-                <h2 className="text-2xl font-semibold">
-                  Beginner Mistakes
-                </h2>
-              </div>
-
+              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.08em] leading-[0.9] max-w-5xl">
+                World-class athlete tips
+              </h2>
             </div>
 
-            <div className="space-y-5">
+            {/* MAIN LAYOUT */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              {/* LEFT IMAGE */}
+              <div className="lg:col-span-5 relative">
+                
+                  <img
+                    src="../assets/gen1.jpg"
+                    alt=""
+                    className="w-full h-[320px] sm:h-[400px] md:h-[600px] object-cover object-top rounded-xl"
+                  />
+                
 
-              {beginnerMistakes.map((mistake) => (
-                <div
-                  key={mistake}
-                  className="flex items-start gap-4 border-b border-white/10 pb-5"
-                >
-
-                  <div className="min-w-[38px] h-[38px] rounded-md bg-white/10 flex items-center justify-center text-orange-400">
-                    <Flame size={18} />
-                  </div>
-
-                  <p className="text-gray-300 leading-relaxed">
-                    {mistake}
+                {/* FLOATING NOTE */}
+                <div className="absolute -bottom-6 -right-4 bg-white border border-black/10 rounded-2xl px-6 py-5 max-w-[260px]">
+                  <p className="text-xs uppercase tracking-[0.2em] text-[#888] mb-3">
+                    Recovery
                   </p>
 
+                  <h3 className="text-lg font-semibold tracking-[-0.04em] leading-snug">
+                    Recovery quality directly affects strength, energy, and
+                    muscle growth.
+                  </h3>
                 </div>
-              ))}
+              </div>
 
+              {/* RIGHT CONTENT */}
+              <div className="lg:col-span-7">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {[
+                    "Prepare tomorrow's meals at night to avoid unhealthy eating decisions.",
+                    "Hydration affects gym performance more than most supplements.",
+                    "Your recovery quality determines your next workout quality.",
+                    "Consistency for 1 year beats extreme dieting for 1 month.",
+                    "Eat slowly because fast eating increases overeating.",
+                    "Simple diets are easier to maintain than complicated plans.",
+                    "Good sleep improves fat loss and muscle recovery naturally.",
+                    "Train hard, but recover even harder for sustainable progress.",
+                  ].map((tip, index) => (
+                    <div
+                      key={index}
+                      className="bg-[#f8f8f8] border border-black/5 rounded-2xl p-6"
+                    >
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#888] mb-4">
+                        Tip {(index + 1).toString().padStart(2, "0")}
+                      </p>
+
+                      <h3 className="text-lg font-semibold tracking-[-0.04em] leading-relaxed">
+                        {tip}
+                      </h3>
+                    </div>
+                  ))}
+                </div>
+
+                {/* BIG TYPO */}
+                <div className="mt-16">
+                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.09em] leading-[0.85]">
+                    RECOVER
+                    <br />
+                    HARDER
+                  </h1>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
