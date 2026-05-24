@@ -14,7 +14,7 @@ const tracks = [
     id: "mass-gain",
     title: "Mass Gain",
     subtitle: "Strength + hypertrophy focused progression",
-    image: "/assets/gen2.jpg",
+    image: "../assets/gen2.jpg",
     icon: <Dumbbell size={20} strokeWidth={2.2} />,
     description:
       "Focused on progressive overload, muscle growth, and strength adaptation with structured recovery.",
@@ -39,7 +39,7 @@ const tracks = [
     id: "fat-loss",
     title: "Weight Loss",
     subtitle: "Conditioning and fat reduction",
-    image: "/assets/gen6.jpg",
+    image: "../assets/gen6.jpg",
     icon: <Flame size={20} strokeWidth={2.2} />,
     description:
       "High movement frequency and conditioning focused on sustainable fat reduction and endurance.",
@@ -64,7 +64,7 @@ const tracks = [
     id: "recomposition",
     title: "Recomposition",
     subtitle: "Build muscle while losing fat",
-    image: "/assets/gen7.jpg",
+    image: "../assets/gen7.jpg",
     icon: <Activity size={20} strokeWidth={2.2} />,
     description:
       "Balanced training structure combining hypertrophy, conditioning, and recovery optimization.",
@@ -117,7 +117,7 @@ const WorkoutGuide = () => {
               {/* IMAGE */}
               <div className="relative rounded-xl overflow-hidden min-h-[240px] sm:min-h-[300px] xl:flex-1">
                 <img
-                  src="/assets/gen5.webp"
+                  src="../assets/gen5.webp"
                   alt=""
                   className="w-full h-full object-cover absolute inset-0"
                 />
@@ -154,7 +154,7 @@ const WorkoutGuide = () => {
             {/* RIGHT IMAGE */}
             <div className="relative rounded-xl overflow-hidden min-h-[340px] xl:min-h-[620px]">
               <img
-                src="/assets/np.jpg"
+                src="../assets/np.jpg"
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
               />
