@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="hidden md:block h-full relative overflow-hidden">
 
           <img
-            src="/assets/heroimg1.jpg"
+            src="../assets/heroimg1.jpg"
             alt="fitness"
             className="h-full w-full object-cover"
           />

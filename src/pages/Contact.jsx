@@ -34,7 +34,7 @@ const Contact = () => {
             <div className="min-w-[280px] sm:min-w-[320px]">
               <div className="relative h-[420px] rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
                 <img
-                  src="/assets/gen5.webp"
+                  src="../assets/gen5.webp"
                   alt=""
                   className="w-full h-full object-cover"
                 />
@@ -55,7 +55,7 @@ const Contact = () => {
             <div className="min-w-[280px] sm:min-w-[320px] mt-16">
               <div className="relative h-[420px] rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
                 <img
-                  src="/assets/gen6.jpg"
+                  src="../assets/gen6.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
@@ -76,7 +76,7 @@ const Contact = () => {
             <div className="min-w-[320px] sm:min-w-[380px]">
               <div className="relative h-[500px] rounded-xl overflow-hidden bg-gradient-to-br from-orange-500 to-orange-700 shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
                 <img
-                  src="/assets/np.jpg"
+                  src="../assets/np.jpg"
                   alt=""
                   className="w-full h-full object-cover mix-blend-multiply"
                 />
