@@ -13,19 +13,19 @@ const Footer = () => {
   return (
     <footer className="bg-[#050505] overflow-hidden">
 
-      <div className="relative overflow-hidden bg-[#0a0a0a] border-t border-white/5 ">
+      <div className="relative overflow-hidden bg-black">
 
         {/* BACKGROUND GLOW */}
         <div className="absolute inset-0 overflow-hidden">
 
           {/* LEFT ORANGE */}
-          <div className="absolute left-[-5%] bottom-[-10%] w-[420px] h-[420px] bg-[#fc5200] blur-[120px] opacity-55" />
+          <div className="absolute left-[-5%] bottom-[-10%] w-[420px] h-[420px] bg-[#fc5200] blur-[100px] opacity-55" />
 
           {/* CENTER RED */}
-          <div className="absolute left-[35%] bottom-[-12%] w-[420px] h-[320px] bg-red-600 blur-[120px] opacity-40" />
+          <div className="absolute left-[35%] bottom-[-12%] w-[420px] h-[320px] bg-red-600 blur-[100px] opacity-40" />
 
           {/* RIGHT GOLD */}
-          <div className="absolute right-[-5%] bottom-[-10%] w-[420px] h-[320px] bg-orange-300 blur-[130px] opacity-50" />
+          <div className="absolute right-[-5%] bottom-[-10%] w-[420px] h-[320px] bg-orange-300 blur-[120px] opacity-50" />
 
           {/* LIGHT OVERLAY */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/20" />
