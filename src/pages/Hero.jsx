@@ -19,18 +19,7 @@ const Hero = () => {
             className="h-full w-full object-cover"
           />
 
-          {/* FLOATING CARD */}
-          <div className="absolute bottom-10 left-8 rounded-[24px] border border-black/10 bg-black/20 backdrop-blur-xl p-5 max-w-[260px]">
-
-            <p className="text-[10px] uppercase tracking-[0.18em] text-white mb-2">
-              Smart Training
-            </p>
-
-            <h3 className="text-xl font-semibold leading-tight tracking-[-0.04em] text-white">
-              Structured progression built for consistency.
-            </h3>
-
-          </div>
+        
 
           <div className="absolute inset-0 bg-black/10"></div>
 
@@ -45,11 +34,9 @@ const Hero = () => {
               Precision Performance Training
             </p>
 
-            <p className="uppercase text-2xl sm:text-3xl font-bold tracking-[0.10em] text-orange-600">
-              STROQ
-            </p>
+           
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.03em] leading-[0.95] text-[#1d1d1d] uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-[-0.03em] leading-[0.95] text-[#1d1d1d] uppercase">
               Train Smarter.
               <br />
               <span className="text-orange-600">

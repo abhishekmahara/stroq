@@ -5,9 +5,6 @@ const StroqWordCloud = () => {
    <section className="bg-black text-white px-4 sm:px-6 lg:px-8 py-8 sm:py-10 overflow-hidden">
 
 
-    {/* GRAIN */}
-    <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
     {/* HERO */}
     <div className="relative min-h-[560px] flex flex-col items-center justify-center px-5 sm:px-8">
 

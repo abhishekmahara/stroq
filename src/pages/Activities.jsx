@@ -3,8 +3,8 @@
 const StroqActivities = () => {
   return (
     <section className="bg-white py-20 md:py-32 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-        <div className="max-w-7xl">
+      <div className="max-w-350 mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+        <div className="max-w-350">
           <p className="tracking-[0.3em] text-orange-500 text-xs mb-10 uppercase">
             Stroq Activities
           </p>
@@ -17,7 +17,7 @@ const StroqActivities = () => {
           
 
             <li className="transition hover:text-orange-500">
-              Goal tracks: strength, hypertrophy, endurance
+               strength, hypertrophy, endurance
             </li>
 
             <li className="transition hover:text-orange-500">
@@ -25,7 +25,7 @@ const StroqActivities = () => {
             </li>
 
             <li className="transition hover:text-orange-500">
-              Workout guide: mass gain, weight loss, recomposition
+              Workout guide: mass gain, weight loss
             </li>
 
           
@@ -36,7 +36,7 @@ const StroqActivities = () => {
           <img
             src="/assets/aboutimg.jpg"
             alt="Stroq Fitness"
-            className="w-full h-[340px] sm:h-[460px] md:h-[620px] object-cover rounded-4xl"
+            className="w-full h-[340px] sm:h-[460px] md:h-[620px] object-cover rounded-full"
           />
         </div>
       </div>

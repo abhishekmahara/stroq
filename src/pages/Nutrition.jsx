@@ -346,7 +346,7 @@ const Nutrition = () => {
                     Rule {(index + 1).toString().padStart(2, "0")}
                   </span>
 
-                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-[-0.05em] leading-tight ">
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-[-0.05em] leading-tight">
                     {rule}
                   </h3>
                 </div>
