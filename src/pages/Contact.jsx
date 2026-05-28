@@ -97,7 +97,7 @@ const Contact = () => {
             {/* LEFT */}
             <div>
               <p className="text-orange-600 text-[11px] uppercase tracking-[0.22em] font-semibold mb-6">
-                // SERVICES
+                SERVICES
               </p>
 
               <h2 className="text-3xl sm:text-5xl leading-[0.95] tracking-[-0.05em] font-semibold max-w-[12ch]">
@@ -150,79 +150,112 @@ const Contact = () => {
           </div>
 
           {/* CONTACT FORM */}
-          <div className="mt-32 grid lg:grid-cols-[0.9fr_1.1fr] gap-12">
-            {/* LEFT */}
-            <div>
-              <p className="text-orange-600 text-[11px] uppercase tracking-[0.22em] font-semibold mb-6">
-                Contact
-              </p>
+        <div className="space-y-14 pt-40">
+  {/* TOP TEXT */}
+  <div className="max-w-2xl">
+    <p className="text-orange-600 text-[11px] uppercase tracking-[0.22em] font-semibold mb-6">
+     Contact for PERSONAL TRAINING
+    </p>
 
-              <h2 className="text-4xl sm:text-6xl leading-[0.9] tracking-[-0.06em] font-semibold max-w-[8ch]">
-                Let’s Build Your Strongest Version.
-              </h2>
-            </div>
+    <h3 className="text-4xl sm:text-6xl leading-[0.9] tracking-[-0.06em] font-semibold mb-6">
+      Train With Structure.
+      <br />
+      Perform With Purpose.
+    </h3>
 
-            {/* RIGHT */}
-            <form className="space-y-8">
-              <div className="grid sm:grid-cols-2 gap-8">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="border-b border-black/10 pb-5 outline-none text-lg placeholder:text-[#888]"
-                />
+    <p className="text-[#666] text-base sm:text-lg leading-relaxed max-w-xl">
+      Personal coaching focused on strength, performance,
+      recovery, and long-term physical transformation.
+    </p>
+  </div>
 
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="border-b border-black/10 pb-5 outline-none text-lg placeholder:text-[#888]"
-                />
-              </div>
+  {/* CONTACT INFO */}
+  <div className="border-t border-black/10 pt-10">
+    <div className="grid sm:grid-cols-2 gap-y-10 gap-x-16">
+      {/* EMAIL */}
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#888] mb-3">
+          Email
+        </p>
 
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full border-b border-black/10 pb-5 outline-none text-lg placeholder:text-[#888]"
-              />
+        <a
+          href="mailto:abhishekmahara@example.com"
+          className="text-2xl sm:text-3xl tracking-tight font-semibold hover:text-orange-600 transition-colors duration-300"
+        >
+          abhishekmahara9877@gmail.com
+        </a>
+      </div>
 
-              <textarea
-                rows="5"
-                placeholder="Tell us about your fitness goals..."
-                className="w-full border-b border-black/10 pb-5 outline-none text-lg resize-none placeholder:text-[#888]"
-              />
+      {/* PHONE */}
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#888] mb-3">
+          Phone
+        </p>
 
-              <div className="flex items-center justify-between gap-6 pt-6 flex-wrap">
-                {/* SOCIALS */}
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://x.com/abhishekmahara_"
-                    className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
-                  >
-                    <FaXTwitter size={16} />
-                  </a>
+        <a
+          href="tel:+919876543210"
+          className="text-2xl sm:text-3xl tracking-tight font-semibold hover:text-orange-600 transition-colors duration-300"
+        >
+          +91 7456894129
+        </a>
+      </div>
 
-                  <a
-                    href="https://github.com/abhishekmahara"
-                    className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
-                  >
-                    <FaGithub size={16} />
-                  </a>
+      {/* INSTAGRAM */}
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#888] mb-3">
+          Instagram
+        </p>
 
-                  <a
-                    href="https://www.linkedin.com/in/abhishekmahara/"
-                    className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
-                  >
-                    <FaLinkedin size={16} />
-                  </a>
-                </div>
+        <a
+          href="https://instagram.com/abhishekmahara_"
+          target="_blank"
+          className="text-xl tracking-tight font-medium hover:text-orange-600 transition-colors duration-300"
+        >
+          @abhishekmahara_
+        </a>
+      </div>
 
-                {/* BUTTON */}
-                <button className="h-14 px-8 rounded-xl bg-orange-600 hover:bg-black transition-all duration-300 text-white font-medium flex items-center gap-3">
-                  Send Message
-                  <ArrowRight size={18} />
-                </button>
-              </div>
-            </form>
-          </div>
+      {/* LINKEDIN */}
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#888] mb-3">
+          LinkedIn
+        </p>
+
+        <a
+          href="https://www.linkedin.com/in/abhishekmahara/"
+          target="_blank"
+          className="text-xl tracking-tight font-medium hover:text-orange-600 transition-colors duration-300"
+        >
+          linkedin.com/in/abhishekmahara
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* SOCIAL ICONS */}
+  <div className="flex items-center gap-4 pt-2">
+    <a
+      href="https://x.com/abhishekmahara_"
+      className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+    >
+      <FaXTwitter size={18} />
+    </a>
+
+    <a
+      href="https://github.com/abhishekmahara"
+      className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+    >
+      <FaGithub size={18} />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/abhishekmahara/"
+      className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+    >
+      <FaLinkedin size={18} />
+    </a>
+  </div>
+</div>
         </div>
       </section>
     </main>
