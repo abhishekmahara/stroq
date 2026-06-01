@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const StroqWordCloud = () => {
   return (
-   <section className="bg-black text-white px-4 sm:px-6 lg:px-8 py-8 sm:py-10 overflow-hidden">
+   <section className="bg-black text-white  py-8 sm:py-10 overflow-hidden">
 
 
     {/* HERO */}

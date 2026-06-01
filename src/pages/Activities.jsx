@@ -85,7 +85,6 @@ const StroqActivities = () => {
                   text-[2.2rem]
                   sm:text-[3rem]
                   md:text-[4rem]
-                
                   font-black
                   leading-[0.9]
                   text-black
@@ -104,7 +103,7 @@ const StroqActivities = () => {
 
             {/* Activities */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-16 lg:mb-24">
-              <div className="border-l-2 border-orange-500 pl-4">
+              <div className=" pl-4">
                 <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
                   Activity 01
                 </p>
@@ -116,7 +115,7 @@ const StroqActivities = () => {
                 </h3>
               </div>
 
-              <div className="border-l-2 border-orange-500 pl-4">
+              <div className=" pl-4">
                 <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
                   Activity 02
                 </p>
@@ -128,7 +127,7 @@ const StroqActivities = () => {
                 </h3>
               </div>
 
-              <div className="border-l-2 border-orange-500 pl-4">
+              <div className=" pl-4">
                 <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
                   Activity 03
                 </p>

@@ -9,6 +9,39 @@ import {
   TimerReset,
 } from "lucide-react";
 
+const mistakes = [
+  {
+    no: "01",
+    title: "Skipping Recovery",
+    desc: "Muscles grow during recovery, not during training.",
+  },
+  {
+    no: "02",
+    title: "Ego Lifting",
+    desc: "Poor form increases injury risk and slows progress.",
+  },
+  {
+    no: "03",
+    title: "Ignoring Nutrition",
+    desc: "Training cannot compensate for poor eating habits.",
+  },
+  {
+    no: "04",
+    title: "No Progressive Overload",
+    desc: "Without progression, your body has no reason to adapt.",
+  },
+  {
+    no: "05",
+    title: "Inconsistent Routine",
+    desc: "Consistency beats motivation every time.",
+  },
+  {
+    no: "06",
+    title: "Skipping Warmups",
+    desc: "Proper preparation improves performance and mobility.",
+  },
+];
+
 const tracks = [
   {
     id: "mass-gain",
@@ -129,11 +162,11 @@ const WorkoutGuide = () => {
               <div className="bg-orange-600 rounded-xl p-5 sm:p-6 text-white">
                 <div className="text-center">
                   <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-none font-black tracking-[-0.05em]">
-                  4-5
+                    4-5
                   </h2>
 
                   <p className="text-white/70 text-sm sm:text-base mt-2">
-                   Training Days per Week
+                    Training Days per Week
                   </p>
                 </div>
 
@@ -141,7 +174,7 @@ const WorkoutGuide = () => {
 
                 <div className="text-center">
                   <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-none font-black tracking-[-0.05em]">
-                   7-9h
+                    7-9h
                   </h2>
 
                   <p className="text-white/70 text-sm sm:text-base mt-2">
@@ -167,15 +200,11 @@ const WorkoutGuide = () => {
                   Strength + Athletic Conditioning
                 </h3>
               </div>
-
-             
-             
             </div>
           </div>
         </div>
       </section>
 
-      {/* TRAINING MODES */}
       <section className="px-4 sm:px-6 lg:px-8 py-14">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-10">
@@ -183,53 +212,44 @@ const WorkoutGuide = () => {
               Training Modes
             </p>
 
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
-              Choose a structured training pathway.
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Choose your goal.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {tracks.map((track) => (
-              <button
-                key={track.id}
-                onClick={() => setSelectedTrack(track.id)}
-                className={`relative overflow-hidden rounded-xl transition-all duration-300 shadow-[0_18px_50px_rgba(0,0,0,0.08)] ${
-                  selectedTrack === track.id
-                    ? "scale-[1.02]"
-                    : "opacity-90 hover:opacity-100"
-                }`}
-              >
-                <div className="relative h-[240px]">
-                  <img
-                    src={track.image}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
+          <div className="bg-[#f5f5f2] rounded-3xl p-2">
+            <div className="grid md:grid-cols-3 gap-2">
+              {tracks.map((track) => (
+                <button
+                  key={track.id}
+                  onClick={() => setSelectedTrack(track.id)}
+                  className={`relative rounded-2xl p-6 transition-all duration-300 text-left
+              ${
+                selectedTrack === track.id
+                  ? "bg-black text-white"
+                  : "bg-transparent text-black hover:bg-white"
+              }`}
+                >
+                  {selectedTrack === track.id && (
+                    <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-[#fc5200]" />
+                  )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  <div className="mb-4">{track.icon}</div>
 
-                  <div className="absolute inset-0 p-5 flex flex-col justify-between text-white">
-                    <div className="flex justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-white text-black flex items-center justify-center">
-                        {track.icon}
-                      </div>
+                  <h3 className="text-xl font-bold mb-2">{track.title}</h3>
 
-                      <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-xl flex items-center justify-center">
-                        <ArrowRight size={18} />
-                      </div>
-                    </div>
-
-                    <div className="text-left">
-                      <h3 className="text-3xl font-semibold mb-2">
-                        {track.title}
-                      </h3>
-
-                      <p className="text-gray-300">{track.subtitle}</p>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            ))}
+                  <p
+                    className={`text-sm ${
+                      selectedTrack === track.id
+                        ? "text-white/70"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    {track.subtitle}
+                  </p>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -327,8 +347,6 @@ const WorkoutGuide = () => {
 
                         <p className="text-lg">{item}</p>
                       </div>
-
-                     
                     </div>
                   ))}
                 </div>
@@ -337,6 +355,51 @@ const WorkoutGuide = () => {
           </div>
         </div>
       </section>
+      <section className="bg-[#f5f5f2] px-6 lg:px-10 py-24">
+  <div className="max-w-[1600px] mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-20">
+
+    {/* LEFT SIDE */}
+    <div className="lg:sticky lg:top-24 h-fit">
+      <p className="uppercase tracking-[0.25em] text-[#fc5200] text-xs font-semibold mb-6">
+        STROQ GUIDE
+      </p>
+
+      <h2 className="font-black tracking-[-0.08em] leading-[0.9]
+                     text-[clamp(3.5rem,9vw,8rem)]">
+        Workout
+        <br />
+        Mistakes.
+        <br />
+        To Avoid.
+      </h2>
+    </div>
+
+    {/* RIGHT SIDE */}
+    <div>
+      {mistakes.map((item) => (
+        <div
+          key={item.no}
+          className="grid grid-cols-[70px_1fr] gap-8 py-8 border-b border-black/10 group cursor-pointer"
+        >
+          <div className="text-gray-400 text-lg font-medium">
+            {item.no}
+          </div>
+
+          <div>
+            <h3 className="text-2xl md:text-4xl font-bold tracking-tight group-hover:text-[#fc5200] transition-colors">
+              {item.title}
+            </h3>
+
+            <p className="text-gray-500 mt-2 text-base md:text-lg max-w-xl">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
     </main>
   );
 };
