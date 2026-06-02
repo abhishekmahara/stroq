@@ -146,15 +146,14 @@ const Footer = () => {
           </div>
 
           {/* HUGE LOGO */}
-          <div className="relative px-4 sm:px-8 lg:px-14 pb-4">
-
-            <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] xl:text-[16rem] font-semibold tracking-[-0.1em] leading-none text-[#f3ece8] select-none">
-              STROQ
-              <span className="font-normal text-[#f3ece8] italic">
-                Fitness
-              </span>
-            </h1>
-          </div>
+          <div className="relative px-4 sm:px-8 lg:px-14 pb-4 overflow-hidden">
+  <h1 className="text-[clamp(3rem,18vw,16rem)] font-semibold tracking-[-0.08em] sm:tracking-[-0.1em] leading-[0.9] text-[#f3ece8] select-none">
+    STROQ
+    <span className="block sm:inline font-normal italic">
+      Fitness
+    </span>
+  </h1>
+</div>
         </div>
       </div>
     </footer>

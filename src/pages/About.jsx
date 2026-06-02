@@ -320,10 +320,7 @@ const About = () => {
                   into a focused digital fitness experience.
                 </p>
 
-                <button className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#111] text-white px-6 py-4 font-medium hover:bg-[#fc5200] transition">
-                  Explore Stroq
-                  <ArrowUpRight size={18} />
-                </button>
+               
               </div>
             </div>
           </div>
