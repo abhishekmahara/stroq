@@ -93,39 +93,39 @@ const Generator = ({
        
 
         {/* WORKFLOW SECTION */}
-<div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+<div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 bg-black rounded-xl text-white">
 
-  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
+  <div className="p-5">
 
-    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-900 mb-3">
+    <p className="text-[10px] uppercase tracking-[0.16em] mb-3">
       Step 01 | Split
     </p>
 
-    <h3 className="text-xl font-semibold capitalize text-black leading-tight">
+    <h3 className="text-xl font-semibold capitalize leading-tight">
       bodybuilder split
     </h3>
 
   </div>
 
-  <div className="rounded-xl border border-white/10 bg-black backdrop-blur-xl p-5">
+  <div className=" p-5">
 
-    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-100 mb-3">
+    <p className="text-[10px] uppercase tracking-[0.16em] mb-3">
       Step 02 | Goal
     </p>
 
-    <h3 className="text-xl font-semibold capitalize text-white leading-tight">
+    <h3 className="text-xl font-semibold capitalize  leading-tight">
       cardiovascular endurance
     </h3>
 
   </div>
 
-  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
+  <div className=" p-5">
 
-    <p className="text-[10px] uppercase tracking-[0.16em] text-gray-900 mb-3">
+    <p className="text-[10px] uppercase tracking-[0.16em] mb-3">
       Step 03 | Target
     </p>
 
-    <h3 className="text-xl font-semibold capitalize text-black leading-tight">
+    <h3 className="text-xl font-semibold capitalize  leading-tight">
       1 selected below
     </h3>
 

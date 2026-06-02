@@ -1,58 +1,78 @@
 @import "tailwindcss";
 
-*{
-    font-family: 'Space Grotesk', sans-serif;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html,
-body{
-    margin: 0;
-    background: white;
+* {
+  font-family: "Space Grotesk", sans-serif;
 }
 
-span{
-   font-family: inherit ;
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-::selection{
-    background: #fc5200;
-    color: #ffffff;
+body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: white;
+  -webkit-text-size-adjust: 100%;
 }
 
-.stroq-surface{
-    background: white;
+#root {
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.stroq-panel{
-    background: rgba(255,255,255,0.86);
-    border: 1px solid rgba(17,17,17,0.07);
-    box-shadow: 0 24px 80px rgba(17,17,17,0.06);
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+  display: block;
 }
 
-.stroq-chip{
-    border: 1px solid rgba(17,17,17,0.08);
-    background: rgba(255,255,255,0.76);
-    backdrop-filter: blur(18px);
+span {
+  font-family: inherit;
 }
 
-.OrangeShadow{
-    box-shadow: none;
-}
-.reverseOrangeShadow{
-    box-shadow: none;
+::selection {
+  background: #fc5200;
+  color: #ffffff;
 }
 
-.reverseOrangeShadow:hover{
-    transform: none;
-    box-shadow: none;
+.stroq-surface {
+  background: white;
 }
 
-.OrangeShadow:hover{
-    transform: none;
-    box-shadow: none;
+.stroq-panel {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  box-shadow: 0 24px 80px rgba(17, 17, 17, 0.06);
 }
 
-.buttonColor{
-    background-color : #Fc4c02;
+.stroq-chip {
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(18px);
 }
 
+.OrangeShadow,
+.reverseOrangeShadow {
+  box-shadow: none;
+}
+
+.OrangeShadow:hover,
+.reverseOrangeShadow:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.buttonColor {
+  background-color: #fc4c02;
+}
