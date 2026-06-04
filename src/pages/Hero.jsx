@@ -21,7 +21,7 @@ const Hero = () => {
         </div>
 
         {/* CENTER CONTENT */}
-     <div className="flex flex-col items-center justify-center mt-30 md:mt-0 px-6 sm:px-10 py-8 md:py-20">
+     <div className="flex flex-col items-center justify-center my-30 md:my-0 px-6 sm:px-10 py-8 md:py-20">
 
   <div className="relative w-full max-w-[460px] flex flex-col items-center text-center gap-6 overflow-hidden">
 
