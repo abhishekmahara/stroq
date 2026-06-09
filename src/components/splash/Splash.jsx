@@ -19,7 +19,7 @@ const Splash = ({ onFinish }) => {
       }`}
     >
       <img
-        src="/assets/splashnew.jpg"
+        src="/assets/stroqsplash.png"
         alt="STROQ"
         className="fullscreen object-cover animate-pulse"
       />

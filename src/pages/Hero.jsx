@@ -62,7 +62,7 @@ const Hero = () => {
       Explore Workout Guide
     </button>
 
-    <div className="relative z-10 w-full pt-5 border-t border-gray-200">
+    <div className="relative z-10 w-full pt-5 ">
       <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-gray-400 leading-relaxed">
         Goal-based plans | Beginner-friendly | Clean structure
       </p>

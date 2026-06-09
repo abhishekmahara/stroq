@@ -104,9 +104,7 @@ const StroqActivities = () => {
             {/* Activities */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-16 lg:mb-24">
               <div className=" pl-4">
-                <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
-                  Activity 01
-                </p>
+              
 
                 <h3 className="text-xl md:text-2xl font-black leading-tight text-black">
                   WORKOUT
@@ -116,9 +114,7 @@ const StroqActivities = () => {
               </div>
 
               <div className=" pl-4">
-                <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
-                  Activity 02
-                </p>
+              
 
                 <h3 className="text-xl md:text-2xl font-black leading-tight text-black">
                   STRENGTH
@@ -128,9 +124,7 @@ const StroqActivities = () => {
               </div>
 
               <div className=" pl-4">
-                <p className="text-orange-500 text-xs tracking-[0.3em] uppercase mb-3">
-                  Activity 03
-                </p>
+              
 
                 <h3 className="text-xl md:text-2xl font-black leading-tight text-black">
                   NUTRITION

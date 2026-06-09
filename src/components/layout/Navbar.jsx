@@ -50,7 +50,7 @@ const Navbar = () => {
           className="shrink-0"
         >
           <img
-            src="/assets/stroqnewlogoo.png"
+            src="/assets/strlogo.png"
             alt="STROQ"
             className="h-7 sm:h-8 w-auto"
           />
